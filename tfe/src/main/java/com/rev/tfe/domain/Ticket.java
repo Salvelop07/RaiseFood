@@ -35,27 +35,27 @@ public class Ticket {
 	@Autowired
 	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name="USER_ID", nullable=false)
-	private User userId;
+	private User user;
 	
 	@Column(name="TOTAL", nullable=false)
 	private Double total;
 
 	public Ticket() {};
 	
-	public Ticket(String timeSubmitted, String timeResolved, User userId, Double total) {
+	public Ticket(String timeSubmitted, String timeResolved, User user, Double total) {
 		super();
 		this.timeSubmitted = timeSubmitted;
 		this.timeResolved = timeResolved;
-		this.userId = userId;
+		this.user = user;
 		this.total = total;
 	}
 	
-	public Ticket(Integer ticketId, String timeSubmitted, String timeResolved, User userId, Double total) {
+	public Ticket(Integer ticketId, String timeSubmitted, String timeResolved, User user, Double total) {
 		super();
 		this.ticketId = ticketId;
 		this.timeSubmitted = timeSubmitted;
 		this.timeResolved = timeResolved;
-		this.userId = userId;
+		this.user = user;
 		this.total = total;
 	}
 
@@ -83,12 +83,12 @@ public class Ticket {
 		this.timeResolved = timeResolved;
 	}
 
-	public User getUser_Id() {
-		return userId;
+	public User getUser() {
+		return user;
 	}
 
-	public void setUser_Id(User userId) {
-		this.userId = userId;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public Double getTotal() {
@@ -98,7 +98,12 @@ public class Ticket {
 	public void setTotal(Double total) {
 		this.total = total;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Ticket [ticketId=" + ticketId + ", timeSubmitted=" + timeSubmitted + ", timeResolved=" + timeResolved
+				+ ", user=" + user + ", total=" + total + "]";
+	}
 	
 	
 }
