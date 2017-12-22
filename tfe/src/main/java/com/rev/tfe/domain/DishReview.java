@@ -26,13 +26,13 @@ public class DishReview {
 	@GeneratedValue(generator="DR_SEQ", strategy=GenerationType.SEQUENCE)
     private Integer id;
 	
-	@Column(name="DR_DESCRIPTION", nullable=true)
+	@Column(name="DISH_REVIEW_DESCRIPTION", nullable=true)
     private String description;
 	
-	@Column(name="DR_RATING", nullable=false)
+	@Column(name="DISH_REVIEW_RATING", nullable=false)
     private Integer rating;
 	
-	@Column(name="DR_SUBMITTED", nullable=false)
+	@Column(name="DISH_REVIEW_SUBMITTED", nullable=false)
     private String submitted;
 	
 	@Autowired
