@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Entity
-@Table(name="TICKETS")
+@Table(name="TICKET")
 public class Ticket {
 
 	@Id
@@ -48,6 +48,17 @@ public class Ticket {
 		this.timeResolved = timeResolved;
 		this.user = user;
 		this.total = total;
+	}
+	
+	public Ticket(User user, Double total) {
+		super();
+		this.user = user;
+		this.total = total;
+	}
+	
+	public Ticket(User user) {
+		super();
+		this.user = user;
 	}
 	
 	public Ticket(Integer ticketId, String timeSubmitted, String timeResolved, User user, Double total) {
