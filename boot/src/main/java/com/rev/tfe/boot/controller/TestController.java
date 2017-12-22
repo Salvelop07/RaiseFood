@@ -8,7 +8,7 @@ public class TestController {
 
 	@RequestMapping("/")
 	public String home() {
-		return "here";
+		return "In Project 2 ThrowsFoodException test controller";
 	}
 	
 }
