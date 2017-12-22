@@ -12,7 +12,7 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 @Entity
-@Table(name="USER")
+@Table(name="USERS")
 public class User {
 	
 	@Id
@@ -40,8 +40,6 @@ public class User {
 	private Integer role;
 
 	public User() {}
-	
-	
 	
 	public User(Integer id, String userName, String password, String email, String firstName, String lastName,
 			Integer role) {
