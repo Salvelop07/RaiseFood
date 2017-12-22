@@ -35,27 +35,27 @@ public class Ticket {
 	@Autowired
 	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name="USER_ID", nullable=false)
-	private Integer User_Id;
+	private User userId;
 	
 	@Column(name="TOTAL", nullable=false)
 	private Double total;
 
 	public Ticket() {};
 	
-	public Ticket(String timeSubmitted, String timeResolved, Integer user_Id, Double total) {
+	public Ticket(String timeSubmitted, String timeResolved, User userId, Double total) {
 		super();
 		this.timeSubmitted = timeSubmitted;
 		this.timeResolved = timeResolved;
-		User_Id = user_Id;
+		this.userId = userId;
 		this.total = total;
 	}
 	
-	public Ticket(Integer ticketId, String timeSubmitted, String timeResolved, Integer user_Id, Double total) {
+	public Ticket(Integer ticketId, String timeSubmitted, String timeResolved, User userId, Double total) {
 		super();
 		this.ticketId = ticketId;
 		this.timeSubmitted = timeSubmitted;
 		this.timeResolved = timeResolved;
-		User_Id = user_Id;
+		this.userId = userId;
 		this.total = total;
 	}
 
@@ -83,12 +83,12 @@ public class Ticket {
 		this.timeResolved = timeResolved;
 	}
 
-	public Integer getUser_Id() {
-		return User_Id;
+	public User getUser_Id() {
+		return userId;
 	}
 
-	public void setUser_Id(Integer user_Id) {
-		User_Id = user_Id;
+	public void setUser_Id(User userId) {
+		this.userId = userId;
 	}
 
 	public Double getTotal() {
