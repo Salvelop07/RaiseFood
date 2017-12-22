@@ -53,4 +53,5 @@ public class Type {
 	public String toString() {
 		return "Type [id=" + id + ", type=" + type + "]";
 	}	
+
 }

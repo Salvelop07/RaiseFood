@@ -25,15 +25,15 @@ public class Dish {
 	@Column(name="DISH_ID")
 	@SequenceGenerator(allocationSize=1, name="D_SEQ", sequenceName="D_SEQ")
 	@GeneratedValue(generator="D_SEQ", strategy=GenerationType.SEQUENCE)
-	private String id;
+	private Integer id;
 	
-	@Column(name="D_NAME", nullable=false, unique=true)
+	@Column(name="DISH_NAME", nullable=false, unique=true)
 	private String name;
 
-	@Column(name="D_PRICE", nullable=false)
+	@Column(name="DISH_PRICE", nullable=false)
 	private Double price;
 
-	@Column(name="DR_DESCRIPTION", nullable=true)
+	@Column(name="DISH_DESCRIPTION", nullable=true)
 	private String description;
 
 /*	@Autowired
@@ -50,7 +50,7 @@ public class Dish {
 		super();
 	}
 	
-	public Dish(String id, String name, Double price, String description) {
+	public Dish(Integer id, String name, Double price, String description) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -58,11 +58,11 @@ public class Dish {
 		this.description = description;
 	}
 
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
