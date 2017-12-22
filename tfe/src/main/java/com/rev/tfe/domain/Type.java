@@ -14,17 +14,23 @@ import org.springframework.stereotype.Component;
 @Entity
 @Table(name="TYPE")
 public class Type {
+	
 	@Id
 	@Column(name="TYPE_ID")
 	@SequenceGenerator(allocationSize=1, name="D_SEQ", sequenceName="D_SEQ")
 	@GeneratedValue(generator="D_SEQ", strategy=GenerationType.SEQUENCE)
 	private Integer id;
 	
-	@Column(name="TYPE", nullable=false, unique=true)
+	@Column(name="TYPE_NAME", nullable=false, unique=true)
 	private String type;
 
 	public Type() {
 		super();
+	}
+
+	public Type(String type) {
+		super();
+		this.type = type;
 	}
 
 	public Type(Integer id, String type) {

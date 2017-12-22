@@ -40,6 +40,12 @@ public class DishType {
 		super();
 	}
 
+	public DishType(Dish dish, Type type) {
+		super();
+		this.dish = dish;
+		this.type = type;
+	}
+
 	public DishType(Integer id, Dish dish, Type type) {
 		super();
 		this.id = id;
