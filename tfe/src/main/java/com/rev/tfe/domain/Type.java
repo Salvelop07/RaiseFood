@@ -18,7 +18,7 @@ public class Type {
 	@Column(name="TYPE_ID")
 	@SequenceGenerator(allocationSize=1, name="D_SEQ", sequenceName="D_SEQ")
 	@GeneratedValue(generator="D_SEQ", strategy=GenerationType.SEQUENCE)
-	private String id;
+	private Integer id;
 	
 	@Column(name="TYPE", nullable=false, unique=true)
 	private String type;
@@ -27,17 +27,17 @@ public class Type {
 		super();
 	}
 
-	public Type(String id, String type) {
+	public Type(Integer id, String type) {
 		super();
 		this.id = id;
 		this.type = type;
 	}
 
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
