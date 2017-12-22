@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: cam
 Build-Jdk: 1.8.0_152
+=======
+Built-By: Nick
+Build-Jdk: 1.8.0_131
+>>>>>>> 5144fd4a2446beab5813fbf3e9ffe057db93a654
 Created-By: Maven Integration for Eclipse
 
