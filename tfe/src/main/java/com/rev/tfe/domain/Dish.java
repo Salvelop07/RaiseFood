@@ -90,5 +90,9 @@ public class Dish {
 		this.description = description;
 	}
 
-	
+	@Override
+	public String toString() {
+		return "Dish [id=" + id + ", name=" + name + ", price=" + price + ", description=" + description + "]";
+	}
+
 }
