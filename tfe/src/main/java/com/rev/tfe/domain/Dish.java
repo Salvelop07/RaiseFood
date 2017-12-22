@@ -50,6 +50,13 @@ public class Dish {
 		super();
 	}
 	
+	public Dish(String name, Double price, String description) {
+		super();
+		this.name = name;
+		this.price = price;
+		this.description = description;
+	}
+
 	public Dish(Integer id, String name, Double price, String description) {
 		super();
 		this.id = id;
