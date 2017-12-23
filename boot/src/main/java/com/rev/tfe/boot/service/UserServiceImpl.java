@@ -1,5 +1,7 @@
 package com.rev.tfe.boot.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,11 @@ public class UserServiceImpl implements UserService {
 	public User addUser(User u) {
 		User user = userRepo.save(u);
 		return user;
+	}
+	
+	@Override
+	public List<User> findAllUsers() {
+		return userRepo.findAll();
 	}
 
 	@Override
