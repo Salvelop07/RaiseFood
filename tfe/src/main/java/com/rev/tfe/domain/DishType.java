@@ -26,15 +26,15 @@ public class DishType {
 	@GeneratedValue(generator="DT_SEQ", strategy=GenerationType.SEQUENCE)
 	private Integer id;
 	
-//	@Autowired
-//	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
-//	@JoinColumn(name="DISH_ID", nullable=false)
-//	private Dish dish;
-//	
-//	@Autowired
-//	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
-//	@JoinColumn(name="TYPE_ID", nullable=false)
-//	private Type type;
+	@Autowired
+	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@JoinColumn(name="DISH_ID", nullable=false)
+	private Dish dish;
+	
+	@Autowired
+	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@JoinColumn(name="TYPE_ID", nullable=false)
+	private Type type;
 	
 	public DishType() {
 		super();
@@ -42,15 +42,15 @@ public class DishType {
 
 	public DishType(Dish dish, Type type) {
 		super();
-//		this.dish = dish;
-//		this.type = type;
+		this.dish = dish;
+		this.type = type;
 	}
 
 	public DishType(Integer id, Dish dish, Type type) {
 		super();
 		this.id = id;
-//		this.dish = dish;
-//		this.type = type;
+		this.dish = dish;
+		this.type = type;
 	}
 
 	public Integer getId() {
@@ -61,25 +61,25 @@ public class DishType {
 		this.id = id;
 	}
 
-//	public Dish getDish() {
-//		return dish;
-//	}
-//
-//	public void setDish(Dish dish) {
-//		this.dish = dish;
-//	}
-//
-//	public Type getType() {
-//		return type;
-//	}
-//
-//	public void setType(Type type) {
-//		this.type = type;
-//	}
-//
-//	@Override
-//	public String toString() {
-//		return "DishType [id=" + id + ", dish=" + dish + "]";
-//	}
+	public Dish getDish() {
+		return dish;
+	}
+
+	public void setDish(Dish dish) {
+		this.dish = dish;
+	}
+
+	public Type getType() {
+		return type;
+	}
+
+	public void setType(Type type) {
+		this.type = type;
+	}
+
+	@Override
+	public String toString() {
+		return "DishType [id=" + id + ", dish=" + dish + "]";
+	}
 
 }

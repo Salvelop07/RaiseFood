@@ -30,7 +30,7 @@ public class DishReviewServiceImpl implements DishReviewService {
 		return drRepo.findDishReviewByUserId(userId);
 	}
 
-	public List<DishReview> getAllDishReviews() {
+	public List<DishReview> findAllDishReviews() {
 		return drRepo.findAll();
 	}
 

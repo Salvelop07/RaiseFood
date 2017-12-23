@@ -36,7 +36,7 @@ public class TicketLine {
 	@JoinColumn(name="DISH_ID", nullable=false) // need to know dish entity
 	private Dish dish;
 
-	@Column(name="TICKET_LINE_QUANTITY", nullable=false)
+	@Column(name="QUANTITY", nullable=false)
 	private Integer quantity;
 
 	public TicketLine() {

@@ -8,5 +8,5 @@ public interface DishReviewService {
 	public void addDishReview(DishReview dr);
 	public DishReview findDishReviewById(Integer dishId);
 	public DishReview findDishReviewByUserId(Integer userId);
-	public List<DishReview> getAllDishReviews();
+	public List<DishReview> findAllDishReviews();
 }

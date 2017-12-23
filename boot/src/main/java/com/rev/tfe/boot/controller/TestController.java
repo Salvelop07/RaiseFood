@@ -8,9 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.rev.tfe.boot.domain.Dish;
 import com.rev.tfe.boot.domain.DishReview;
-import com.rev.tfe.boot.domain.User;
 import com.rev.tfe.boot.service.DishReviewService;
 
 @RestController
@@ -29,8 +27,8 @@ public class TestController {
 	}
 
 	@RequestMapping(method=RequestMethod.GET)
-	public ArrayList<DishReview> getAllDishReviews() {
-		return (ArrayList<DishReview>) drService.getAllDishReviews();
+	public List<DishReview> findAllDishReviews() {
+		return drService.findAllDishReviews();
 	}
 	
 	
