@@ -29,32 +29,32 @@ public class TicketLine {
 	@Autowired
 	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name="TICKET_ID", nullable=false) // need to know ticket entity
-	private Integer ticketId;
+	private Ticket ticket;
 
 	@Autowired
 	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name="DISH_ID", nullable=false) // need to know dish entity
-	private Integer dishId;
+	private Dish dish;
 
-	@Column(name="TL_QUANTITY", nullable=false)
+	@Column(name="TICKET_LINE_QUANTITY", nullable=false)
 	private Integer quantity;
 
 	public TicketLine() {
 		super();
 	}
 
-	public TicketLine(Integer ticketId, Integer dishId, Integer quantity) {
+	public TicketLine(Ticket ticket, Dish dish, Integer quantity) {
 		super();
-		this.ticketId = ticketId;
-		this.dishId = dishId;
+		this.ticket = ticket;
+		this.dish = dish;
 		this.quantity = quantity;
 	}
 
-	public TicketLine(Integer ticketLineId, Integer ticketId, Integer dishId, Integer quantity) {
+	public TicketLine(Integer ticketLineId, Ticket ticket, Dish dish, Integer quantity) {
 		super();
 		this.ticketLineId = ticketLineId;
-		this.ticketId = ticketId;
-		this.dishId = dishId;
+		this.ticket = ticket;
+		this.dish = dish;
 		this.quantity = quantity;
 	}
 
@@ -66,20 +66,20 @@ public class TicketLine {
 		this.ticketLineId = ticketLineId;
 	}
 
-	public Integer getTicketId() {
-		return ticketLineId;
+	public Ticket getTicket() {
+		return ticket;
 	}
 
-	public void setTicketId(Integer ticketId) {
-		this.ticketId = ticketId;
+	public void setTicket(Ticket ticket) {
+		this.ticket = ticket;
 	}
 
-	public Integer getDishId() {
-		return dishId;
+	public Dish getDish() {
+		return dish;
 	}
 
-	public void setDishId(Integer dishId) {
-		this.dishId = dishId;
+	public void setDishId(Dish dish) {
+		this.dish = dish;
 	}
 
 	public Integer getQuantity() {
@@ -92,7 +92,7 @@ public class TicketLine {
 
 	@Override
 	public String toString() {
-		return "TicketLine [ticketLineId=" + ticketLineId + ", ticketId=" + ticketId + ", dishId=" + dishId + ", quantity="
+		return "TicketLine [ticketLineId=" + ticketLineId + ", ticket=" + ticket + ", dish=" + dish + ", quantity="
 				+ quantity + "]";
 	} 
 }

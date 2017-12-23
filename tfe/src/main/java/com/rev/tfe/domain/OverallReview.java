@@ -32,7 +32,7 @@ public class OverallReview {
 	@Column(name="SERVICE_SCORE", nullable=true)
 	private Integer serviceScore;
 	
-	@Column(name="OR_DESCRIPTION", nullable=true)
+	@Column(name="OVERALL_REVIEW_DESCRIPTION", nullable=true)
 	private String description;
 	
 	@Autowired

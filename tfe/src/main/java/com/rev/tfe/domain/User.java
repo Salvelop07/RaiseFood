@@ -41,8 +41,6 @@ public class User {
 
 	public User() {}
 	
-	
-	
 	public User(Integer id, String userName, String password, String email, String firstName, String lastName,
 			Integer role) {
 		super();
@@ -120,6 +118,14 @@ public class User {
 
 	public void setRole(Integer role) {
 		this.role = role;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", userName=" + userName + ", password=" + password + ", email=" + email
+				+ ", firstName=" + firstName + ", lastName=" + lastName + ", role=" + role + "]";
 	}
 
 	

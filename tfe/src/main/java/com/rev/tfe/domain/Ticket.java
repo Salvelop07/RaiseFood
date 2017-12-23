@@ -1,5 +1,7 @@
 package com.rev.tfe.domain;
 
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -17,7 +21,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Entity
-@Table(name="TICKETS")
+@Table(name="TICKET")
 public class Ticket {
 
 	@Id
@@ -35,27 +39,44 @@ public class Ticket {
 	@Autowired
 	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name="USER_ID", nullable=false)
-	private User userId;
+	private User user;
+	
+	@ManyToMany(fetch=FetchType.EAGER)
+	@JoinTable(name="TICKET_LINE",
+	joinColumns=@JoinColumn(name="TICKET_ID"),
+	inverseJoinColumns=@JoinColumn(name="DISH_ID"))
+	private Set<Dish> dishes;
 	
 	@Column(name="TOTAL", nullable=false)
 	private Double total;
 
 	public Ticket() {};
 	
-	public Ticket(String timeSubmitted, String timeResolved, User userId, Double total) {
+	public Ticket(String timeSubmitted, String timeResolved, User user, Double total) {
 		super();
 		this.timeSubmitted = timeSubmitted;
 		this.timeResolved = timeResolved;
-		this.userId = userId;
+		this.user = user;
 		this.total = total;
 	}
 	
-	public Ticket(Integer ticketId, String timeSubmitted, String timeResolved, User userId, Double total) {
+	public Ticket(User user, Double total) {
+		super();
+		this.user = user;
+		this.total = total;
+	}
+	
+	public Ticket(User user) {
+		super();
+		this.user = user;
+	}
+	
+	public Ticket(Integer ticketId, String timeSubmitted, String timeResolved, User user, Double total) {
 		super();
 		this.ticketId = ticketId;
 		this.timeSubmitted = timeSubmitted;
 		this.timeResolved = timeResolved;
-		this.userId = userId;
+		this.user = user;
 		this.total = total;
 	}
 
@@ -83,12 +104,12 @@ public class Ticket {
 		this.timeResolved = timeResolved;
 	}
 
-	public User getUser_Id() {
-		return userId;
+	public User getUser() {
+		return user;
 	}
 
-	public void setUser_Id(User userId) {
-		this.userId = userId;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public Double getTotal() {
@@ -98,7 +119,12 @@ public class Ticket {
 	public void setTotal(Double total) {
 		this.total = total;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Ticket [ticketId=" + ticketId + ", timeSubmitted=" + timeSubmitted + ", timeResolved=" + timeResolved
+				+ ", user=" + user + ", total=" + total + "]";
+	}
 	
 	
 }
