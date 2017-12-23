@@ -51,16 +51,6 @@ public class Type {
 		this.type = type;
 	}
 
-	public Type(String type, Set<Dish> dishes) {
-		super();
-		this.type = type;
-		this.dishes = dishes;
-	}
-
-	public Set<Dish> getDishes() {
-		return dishes;
-	}
-
 	public void setDishes(Set<Dish> dishes) {
 		this.dishes = dishes;
 	}
@@ -87,10 +77,19 @@ public class Type {
 	public void setType(String type) {
 		this.type = type;
 	}
+	
+	public Type(String type, Set<Dish> dishes) {
+		super();
+		this.type = type;
+		this.dishes = dishes;
+	}
+
+	public Set<Dish> getDishes() {
+		return dishes;
+	}
 
 	@Override
 	public String toString() {
-		return "Type [id=" + id + ", type=" + type + "]";
-	}	
-
+		return "Type [id=" + id + ", type=" + type + ", dishes=" + dishes + "]";
+	}
 }
