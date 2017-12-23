@@ -52,7 +52,7 @@ public class Ticket {
 
 	public Ticket() {};
 	
-	public Ticket(String timeSubmitted, String timeResolved, User user, Double total) {
+	public Ticket(String timeSubmitted, String timeResolved, User user, Set<Dish> dishes, Double total) {
 		super();
 		this.timeSubmitted = timeSubmitted;
 		this.timeResolved = timeResolved;
@@ -71,7 +71,7 @@ public class Ticket {
 		this.user = user;
 	}
 	
-	public Ticket(Integer ticketId, String timeSubmitted, String timeResolved, User user, Double total) {
+	public Ticket(Integer ticketId, String timeSubmitted, String timeResolved, User user, Set<Dish> dishes, Double total) {
 		super();
 		this.ticketId = ticketId;
 		this.timeSubmitted = timeSubmitted;
@@ -111,6 +111,14 @@ public class Ticket {
 	public void setUser(User user) {
 		this.user = user;
 	}
+	
+	public Set<Dish> getDishes() {
+		return dishes;
+	}
+
+	public void setDishes(Set<Dish> dishes) {
+		this.dishes = dishes;
+	}
 
 	public Double getTotal() {
 		return total;
@@ -123,8 +131,6 @@ public class Ticket {
 	@Override
 	public String toString() {
 		return "Ticket [ticketId=" + ticketId + ", timeSubmitted=" + timeSubmitted + ", timeResolved=" + timeResolved
-				+ ", user=" + user + ", total=" + total + "]";
+				+ ", user=" + user + ", dishes=" + dishes + ", total=" + total + "]";
 	}
-	
-	
 }
