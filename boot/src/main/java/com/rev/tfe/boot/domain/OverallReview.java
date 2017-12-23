@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -36,7 +36,7 @@ public class OverallReview {
 	private String description;
 	
 	@Autowired
-	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@OneToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	@JoinColumn(name="TICKET_ID", nullable=false)
 	private Ticket ticket;
 
