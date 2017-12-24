@@ -45,7 +45,7 @@ public class Ticket {
 	private Double total;
 	
 	@Autowired
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "ticketId", cascade=CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "ticket", cascade=CascadeType.ALL)
 	private Set<TicketLine> ticketLines = new HashSet<TicketLine>();
 
 	public Ticket() {};
