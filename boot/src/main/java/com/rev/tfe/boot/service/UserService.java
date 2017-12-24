@@ -11,5 +11,6 @@ public interface UserService {
 	public User findUserById(Integer id);
 	public User findUserByEmail(String email);
 	public User findUserByUserName(String username);
+	public User findUserByUserNameAndPassword(String username, String password);
 
 }

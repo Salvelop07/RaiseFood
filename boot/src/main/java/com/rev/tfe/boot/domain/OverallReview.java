@@ -37,7 +37,7 @@ public class OverallReview {
 	
 	@Autowired
 	@OneToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
-	@JoinColumn(name="TICKET_ID", nullable=false)
+	@JoinColumn(name="TICKET_ID", nullable=false, unique=true)
 	private Ticket ticket;
 
 	public OverallReview() {

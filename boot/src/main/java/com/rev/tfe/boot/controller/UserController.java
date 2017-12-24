@@ -31,5 +31,21 @@ public class UserController {
 	public User getUser(@PathVariable int id) {
 		return userService.findUserById(id);
 	}
+	
+	@RequestMapping(value="/byUsername", method=RequestMethod.POST, produces=MediaType.APPLICATION_JSON_VALUE)
+	public User getUserByUsername(@RequestBody User u) {
+		return userService.findUserByUserName(u.getUserName());
+	}
+	
+	@RequestMapping(value="/byEmail", method=RequestMethod.POST, produces=MediaType.APPLICATION_JSON_VALUE)
+	public User getUserByEmail(@RequestBody User u) {
+		return userService.findUserByEmail(u.getEmail());
+	}
+	
+	@RequestMapping(value="/verify", method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE, 
+			produces=MediaType.APPLICATION_JSON_VALUE)
+	public User getUserByUsernameAndPassword(@PathVariable User u) {
+		return userService.findUserByUserNameAndPassword(u.getUserName(), u.getPassword());
+	}
 
 }
