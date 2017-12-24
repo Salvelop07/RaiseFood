@@ -38,7 +38,7 @@ public class Dish {
 	private String description;
 
 	@Autowired
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "dishId", cascade=CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "dish", cascade=CascadeType.ALL)
 	private Set<TicketLine> ticketLines = new HashSet<TicketLine>();
 	
 /*	@Autowired
