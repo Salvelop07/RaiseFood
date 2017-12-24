@@ -28,7 +28,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
-	public User getUser(@PathVariable Integer id) {
+	public User getUser(@PathVariable int id) {
 		return userService.findUserById(id);
 	}
 
