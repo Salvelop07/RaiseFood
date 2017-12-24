@@ -1,5 +1,6 @@
 package com.rev.tfe.boot.domain;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -10,9 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -38,26 +38,25 @@ public class Ticket {
 	
 	@Autowired
 	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
-	@JoinColumn(name="USER_ID", nullable=false)
+	@JoinColumn(name="USER_ID")
 	private User user;
-	
-	@ManyToMany(fetch=FetchType.EAGER)
-	@JoinTable(name="TICKET_LINE",
-	joinColumns=@JoinColumn(name="TICKET_ID"),
-	inverseJoinColumns=@JoinColumn(name="DISH_ID"))
-	private Set<Dish> dishes;
 	
 	@Column(name="TOTAL", nullable=false)
 	private Double total;
+	
+	@Autowired
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "ticketId", cascade=CascadeType.ALL)
+	private Set<TicketLine> ticketLines = new HashSet<TicketLine>();
 
 	public Ticket() {};
 	
-	public Ticket(String timeSubmitted, String timeResolved, User user, Set<Dish> dishes, Double total) {
+	public Ticket(String timeSubmitted, String timeResolved, User user, Double total, Set<TicketLine> ticketLines) {
 		super();
 		this.timeSubmitted = timeSubmitted;
 		this.timeResolved = timeResolved;
 		this.user = user;
 		this.total = total;
+		this.ticketLines = ticketLines;
 	}
 	
 	public Ticket(User user, Double total) {
@@ -71,7 +70,7 @@ public class Ticket {
 		this.user = user;
 	}
 	
-	public Ticket(Integer ticketId, String timeSubmitted, String timeResolved, User user, Set<Dish> dishes, Double total) {
+	public Ticket(Integer ticketId, String timeSubmitted, String timeResolved, User user, Double total, Set<TicketLine> ticketLines) {
 		super();
 		this.ticketId = ticketId;
 		this.timeSubmitted = timeSubmitted;
@@ -111,14 +110,6 @@ public class Ticket {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
-	public Set<Dish> getDishes() {
-		return dishes;
-	}
-
-	public void setDishes(Set<Dish> dishes) {
-		this.dishes = dishes;
-	}
 
 	public Double getTotal() {
 		return total;
@@ -128,9 +119,17 @@ public class Ticket {
 		this.total = total;
 	}
 
+	public Set<TicketLine> getTicketLines() {
+		return ticketLines;
+	}
+
+	public void setTicketLines(Set<TicketLine> ticketLines) {
+		this.ticketLines = ticketLines;
+	}
+
 	@Override
 	public String toString() {
 		return "Ticket [ticketId=" + ticketId + ", timeSubmitted=" + timeSubmitted + ", timeResolved=" + timeResolved
-				+ ", user=" + user + ", dishes=" + dishes + ", total=" + total + "]";
+				+ ", user=" + user + ", total=" + total + ", ticketLines=" + ticketLines + "]";
 	}
 }
