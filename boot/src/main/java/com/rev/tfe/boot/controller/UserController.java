@@ -34,12 +34,14 @@ public class UserController {
 		return userService.findUserById(id);
 	}
 	
-	@RequestMapping(value="/byUsername", method=RequestMethod.POST, produces=MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value="/byUsername", method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE, 
+			produces=MediaType.APPLICATION_JSON_VALUE)
 	public User getUserByUsername(@RequestBody User u) {
 		return userService.findUserByUserName(u.getUserName());
 	}
 	
-	@RequestMapping(value="/byEmail", method=RequestMethod.POST, produces=MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value="/byEmail", method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE, 
+			produces=MediaType.APPLICATION_JSON_VALUE)
 	public User getUserByEmail(@RequestBody User u) {
 		return userService.findUserByEmail(u.getEmail());
 	}
