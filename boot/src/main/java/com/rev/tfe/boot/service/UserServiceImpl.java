@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService {
 	UserRepository userRepo;
 
 	@Override
-	public User addUser(User u) {
+	public User updateUser(User u) {
 		User user = userRepo.save(u);
 		return user;
 	}

@@ -6,7 +6,7 @@ import com.rev.tfe.boot.domain.User;
 
 public interface UserService {
 	
-	public User addUser(User u);
+	public User updateUser(User u);
 	public List<User> findAllUsers();
 	public User findUserById(Integer id);
 	public User findUserByEmail(String email);
