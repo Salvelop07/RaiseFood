@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.rev.tfe.boot.domain.User;
 import com.rev.tfe.boot.service.UserService;
 
+
 @RestController
 @RequestMapping("/user")
 public class UserController {
