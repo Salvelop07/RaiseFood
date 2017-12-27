@@ -1,2 +1,4 @@
 /.metadata/
 /.recommenders/
+./boot/target/classes/META-INF/maven/com.rev.tfe/boot/pom.properties
+
