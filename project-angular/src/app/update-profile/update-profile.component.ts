@@ -24,7 +24,7 @@ export class UpdateProfileComponent implements OnInit {
     console.log(this.currentUser);
     this.loginService.update(this.currentUser)
       .subscribe((user) => {
-
+        // do stuff here
       });
   }
 
