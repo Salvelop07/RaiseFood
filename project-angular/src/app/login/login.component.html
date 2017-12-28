@@ -1,5 +1,21 @@
-<input type="text" [(ngModel)]="userName" placeholder="Username" ngModel required>
+<!-- <input type="text" [(ngModel)]="userName" placeholder="Username" ngModel required>
 <br>
 <input type="password" [(ngModel)]="password" placeholder="Password" ngModel required>
 <br>
-<button (click)="login()">Login</button>
+<button (click)="login()">Login</button> -->
+<form novalidate [formGroup]="loginForm" (ngSubmit)="login()">
+  <div class="form-group" [ngClass]="{
+    'has-danger': userName.invalid && userName.dirty,
+    'has-success': userName.valid && userName.dirty
+  }">
+    <label>Username</label>
+    <input type="text" class="form-control" formControlName="userName" placeholder="Username">
+  </div>
+  <div class="form-group">
+    <label>Password</label>
+    <input type="password" class="form-control" formControlName="password" placeholder="Password">
+  </div>
+
+  <button type="submit">Login</button>
+  <pre>{{loginForm.value | json}}</pre>
+</form>

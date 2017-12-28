@@ -21,11 +21,15 @@ export class UpdateProfileComponent implements OnInit {
   }
 
   update() {
-    console.log(this.currentUser);
-    this.loginService.update(this.currentUser)
-      .subscribe((user) => {
-        // do stuff here
-      });
+    if (this.loginService.hasEmptyFields(this.currentUser)) {
+      console.log("empty");
+    }
+    else {
+      this.loginService.update(this.currentUser)
+        .subscribe((user) => {
+          // do stuff here
+        });
+    }
   }
 
 }

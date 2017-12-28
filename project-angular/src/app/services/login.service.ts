@@ -19,13 +19,6 @@ export class LoginService {
     return this.loggedIn.asObservable().share();
   }
 
-  isEmpty(input: string): boolean {
-    if ((input == '') || (input == undefined)) {
-      return true;
-    }
-    return false;
-  }
-
   hasEmptyFields(user: User): boolean {
     for (let key in user) {
       if ((user[key] === '') || (user[key] === undefined)) {
@@ -41,8 +34,8 @@ export class LoginService {
         if (user !== null) {
           localStorage.setItem('currentUser', JSON.stringify(user));
           this.loggedIn.next(true);
-          return user;
         }
+        return user;
       });
   }
 

@@ -37,10 +37,15 @@ export class RegisterComponent implements OnInit {
       lastName: this.lastName,
       role: 1,
     }
-    this.loginService.register(user)
-      .subscribe((user) => {
-        // do stuff here
-      });
+    if (this.loginService.hasEmptyFields(user)) {
+      console.log("empty");
+    }
+    else {
+      this.loginService.register(user)
+        .subscribe((user) => {
+          // do stuff here
+        });
+    }
   }
 
 }
