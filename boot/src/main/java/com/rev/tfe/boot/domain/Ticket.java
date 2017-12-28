@@ -77,6 +77,7 @@ public class Ticket {
 		this.timeResolved = timeResolved;
 		this.user = user;
 		this.total = total;
+		this.ticketLines = ticketLines;
 	}
 
 	public Integer getTicketId() {
