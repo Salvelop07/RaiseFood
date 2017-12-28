@@ -11,6 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
+import { ClarityModule } from 'clarity-angular';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { UpdateProfileComponent } from './update-profile/update-profile.componen
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    ClarityModule.forRoot()
   ],
   providers: [LoginService, UserApiService],
   bootstrap: [AppComponent]
