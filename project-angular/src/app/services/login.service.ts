@@ -7,6 +7,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/share';
 import 'rxjs/add/operator/map';
+import { ValidatorUserObj } from '../beans/user-validator';
 
 @Injectable()
 export class LoginService {
@@ -40,33 +41,17 @@ export class LoginService {
       });
   }
 
-  register(user: User): Observable<User | string> {
-    let errorMessage: string = null;
-    this.uas.getUserByUsername(user).subscribe(user => { 
-      if (user === null)
-        errorMessage = "Username taken";
-    });
-    this.uas.getUserByEmail(user).subscribe(user => { 
-      if (errorMessage === null) {
-        errorMessage += "\nEmail taken";
-      }
-      else {
-        errorMessage = "Email taken";
-      }
-    });
-
-    return this.uas.updateUser(user).map((user) => {
-      if (user === null) {
-        return errorMessage;
-      } else {
-        localStorage.setItem('currentUser', JSON.stringify(user));
+  register(user: User): Observable<ValidatorUserObj> {
+    return this.uas.updateUser(user).map((validator) => {
+      if (validator.user) {
+        localStorage.setItem('currentUser', JSON.stringify(validator.user));
         this.loggedIn.next(true);
-        return user;
       }
+      return validator;
     })
   }
 
-  update(user: User): Observable<User> {
+  update(user: User): Observable<ValidatorUserObj> {
     return this.uas.updateUser(user).map((user) => {
       localStorage.setItem('currentUser', JSON.stringify(user));
       return user;
