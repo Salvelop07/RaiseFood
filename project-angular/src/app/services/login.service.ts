@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { User } from '../beans/user';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/share';
 import 'rxjs/add/operator/map';
 
@@ -39,12 +40,18 @@ export class LoginService {
       });
   }
 
-  register(user: User): Observable<User> {
-    return this.uas.updateUser(user).map((user) => {
-      localStorage.setItem('currentUser', JSON.stringify(user));
-      this.loggedIn.next(true);
-      return user;
-    })
+  register(user: User): Observable<User | string>{
+    if (this.uas.getUserByUsername(user).map(user => {return user;}) !== null) {
+      return Observable.of("Username taken");
+    } else if (this.uas.getUserByEmail(user).map(user => {return user;}) !== null) {
+      return Observable.of("Email taken");
+    } else {
+      return this.uas.updateUser(user).map((user) => {
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        this.loggedIn.next(true);
+        return user;
+      })
+    }
   }
 
   update(user: User): Observable<User> {
