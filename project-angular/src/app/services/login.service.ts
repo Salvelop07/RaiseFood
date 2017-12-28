@@ -20,11 +20,12 @@ export class LoginService {
   }
 
   login(user: User): Observable<User> {
-    return this.uas.getUserByUsernameAndPassword(user).map((user)=>{
-      localStorage.setItem('currentUser', JSON.stringify(user));
-      this.loggedIn.next(true);
-      return user;
-    });
+    return this.uas.getUserByUsernameAndPassword(user)
+      .map((user) => {
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        this.loggedIn.next(true);
+        return user;
+      });
   }
 
   register(user: User): Observable<User> {

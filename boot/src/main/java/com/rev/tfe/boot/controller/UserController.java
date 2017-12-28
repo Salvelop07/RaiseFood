@@ -48,7 +48,7 @@ public class UserController {
 	
 	@RequestMapping(value="/verify", method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE, 
 			produces=MediaType.APPLICATION_JSON_VALUE)
-	public User getUserByUsernameAndPassword(@PathVariable User u) {
+	public User getUserByUsernameAndPassword(@RequestBody User u) {
 		return userService.findUserByUserNameAndPassword(u.getUserName(), u.getPassword());
 	}
 

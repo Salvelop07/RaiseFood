@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    let user = {
+    let user: User = {
       id: null,
       userName: this.userName,
       password: this.password,

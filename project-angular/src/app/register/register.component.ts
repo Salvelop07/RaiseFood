@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../services/login.service';
-import { Route } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import { User } from '../beans/user';
 
 @Component({
   selector: 'app-register',
@@ -15,7 +15,7 @@ export class RegisterComponent implements OnInit {
   firstName: string;
   lastName: string;
 
-  returnUrl: string;
+  returnUrl: ActivatedRoute;
 
   constructor(
     private loginService: LoginService,
@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    let user = {
+    let user: User = {
       id: null,
       userName: this.userName,
       password: this.password,

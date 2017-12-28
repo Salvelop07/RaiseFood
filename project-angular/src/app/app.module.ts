@@ -7,8 +7,9 @@ import { AppComponent } from './app.component';
 import { LoginService } from './services/login.service';
 import { UserApiService } from './services/user-api.service';
 import { AppRoutingModule } from './app-routing/app-routing.module';
-import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { LoginComponent } from './login/login.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     FormsModule
   ],
