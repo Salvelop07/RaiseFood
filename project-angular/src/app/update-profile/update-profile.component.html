@@ -1,0 +1,23 @@
+<div>
+  <label>First Name</label>
+  <br>
+  <input type="text" [(ngModel)]="currentUser.firstName" placeholder="Firstname">
+  <br>
+  <label>Last Name</label>
+  <br>
+  <input type="text" [(ngModel)]="currentUser.lastName" placeholder="Lastname">
+  <br>
+  <label>Email</label>
+  <br>
+  <input type="text" [(ngModel)]="currentUser.email" placeholder="Email">
+  <br>
+  <label>Username</label>
+  <br>
+  <input type="text" [(ngModel)]="currentUser.userName" placeholder="Username">
+  <br>
+  <label>Password</label>
+  <br>
+  <input type="password" [(ngModel)]="currentUser.password" placeholder="Password">
+  <br>
+  <button (click)="update()">update</button>
+</div>

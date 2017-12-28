@@ -37,7 +37,10 @@ export class LoginService {
   }
 
   update(user: User): Observable<User> {
-    return this.uas.updateUser(user);
+    return this.uas.updateUser(user).map((user) =>{
+      localStorage.setItem('currentUser', JSON.stringify(user));
+      return user;
+    });
   }
 
   logout() {
