@@ -30,6 +30,10 @@ export class UserApiService {
     return this.http.post<User>(`${apiUrl}/username`, user, httpOptions);
   }
 
+  getUserByEmail(user: User): Observable<User> {
+    return this.http.post<User>(`${apiUrl}/byEmail`, user, httpOptions);
+  }
+
   getUserByUsernameAndPassword(user: User): Observable<User> {
     return this.http.post<User>(`${apiUrl}/verify`, user, httpOptions);
   }
