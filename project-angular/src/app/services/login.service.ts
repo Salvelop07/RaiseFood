@@ -40,18 +40,30 @@ export class LoginService {
       });
   }
 
-  register(user: User): Observable<User | string>{
-    if (this.uas.getUserByUsername(user).map(user => {return user;}) !== null) {
-      return Observable.of("Username taken");
-    } else if (this.uas.getUserByEmail(user).map(user => {return user;}) !== null) {
-      return Observable.of("Email taken");
-    } else {
-      return this.uas.updateUser(user).map((user) => {
+  register(user: User): Observable<User | string> {
+    let errorMessage: string = null;
+    this.uas.getUserByUsername(user).subscribe(user => { 
+      if (user === null)
+        errorMessage = "Username taken";
+    });
+    this.uas.getUserByEmail(user).subscribe(user => { 
+      if (errorMessage === null) {
+        errorMessage += "\nEmail taken";
+      }
+      else {
+        errorMessage = "Email taken";
+      }
+    });
+
+    return this.uas.updateUser(user).map((user) => {
+      if (user === null) {
+        return errorMessage;
+      } else {
         localStorage.setItem('currentUser', JSON.stringify(user));
         this.loggedIn.next(true);
         return user;
-      })
-    }
+      }
+    })
   }
 
   update(user: User): Observable<User> {

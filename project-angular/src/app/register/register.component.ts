@@ -83,18 +83,13 @@ export class RegisterComponent implements OnInit {
     this.registerForm.reset();
     this.loginService.register(user)
       .subscribe((val) => {
-        if (typeof(val) == 'string')
+        if (typeof(val) == 'string') {
           this.errorMessage = val;
-        else (typeof(val) == 'object')
+          this.invalid = true;
+        }
+        else if (typeof(val) == 'object') {
           this.invalid = false;
-        // do stuff here
-        // if (user === null) {
-        //   this.invalid = true;
-        //   this.errorMessage = ""
-        // }
-        // else { 
-        //   this.invalid = false;
-        // }
+        }
       });
   }
 
