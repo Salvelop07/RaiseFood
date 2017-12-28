@@ -65,11 +65,16 @@ export class LoginComponent implements OnInit {
       lastName: null,
       role: null,
     }
+    this.loginForm.reset();
     this.loginService.login(user)
       .subscribe((user) => {
         if (user === null) {
           this.invalid = true;
           this.errorMessage = "Invalid username or password";
+        }
+        else {
+          this.invalid = false;
+          this.loginForm.reset();
         }
       });
 
