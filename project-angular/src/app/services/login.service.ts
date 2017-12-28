@@ -19,12 +19,30 @@ export class LoginService {
     return this.loggedIn.asObservable().share();
   }
 
+  isEmpty(input: string): boolean {
+    if ((input == '') || (input == undefined)) {
+      return true;
+    }
+    return false;
+  }
+
+  hasEmptyFields(user: User): boolean {
+    for (let key in user) {
+      if ((user[key] === '') || (user[key] === undefined)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   login(user: User): Observable<User> {
     return this.uas.getUserByUsernameAndPassword(user)
       .map((user) => {
-        localStorage.setItem('currentUser', JSON.stringify(user));
-        this.loggedIn.next(true);
-        return user;
+        if (user !== null) {
+          localStorage.setItem('currentUser', JSON.stringify(user));
+          this.loggedIn.next(true);
+          return user;
+        }
       });
   }
 
@@ -37,7 +55,7 @@ export class LoginService {
   }
 
   update(user: User): Observable<User> {
-    return this.uas.updateUser(user).map((user) =>{
+    return this.uas.updateUser(user).map((user) => {
       localStorage.setItem('currentUser', JSON.stringify(user));
       return user;
     });

@@ -35,11 +35,16 @@ export class LoginComponent implements OnInit {
       lastName: null,
       role: null,
     }
-    this.loginService.login(user)
+    if (this.loginService.hasEmptyFields(user)) {
+      console.log("empty");
+    } 
+    else {
+      this.loginService.login(user)
       .subscribe((user) => {
         // whatever is needed can be done here
         // Just for testing
       });
+    }
   }
 
 }
