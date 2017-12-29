@@ -1,6 +1,6 @@
 <app-login *ngIf="!isLoggedIn" [loginModal]="loginModal" (loginModalEmitter)="toggleLoginModal()"></app-login>
 <app-register *ngIf="!isLoggedIn" [registerModal]="registerModal" (registerModalEmitter)="toggleRegisterModal()"></app-register>
-<div class="main-page">
+<div class="main-container">
   <header class="header header-1">
     <div class="branding">
       <span class="title">{{branding}}</span>
@@ -12,6 +12,9 @@
     </div>
   </header>
   <div class="content-container">
+    <div class="content-area">
+      <router-outlet></router-outlet>
+    </div>
     <nav class="sidenav">
       <section class="sidenav-content">
         <a *ngIf="!isLoggedIn" class="nav-link" (click)="toggleLoginModal()">
@@ -31,7 +34,7 @@
               <a class="nav-link">Order History</a>
             </li>
             <li>
-              <a class="nav-link">Update Profile</a>
+              <a class="nav-link" (click)="profileView()">Update Profile</a>
             </li>
           </ul>
           <!-- <input id="tab1" type="checkbox">
@@ -40,5 +43,4 @@
       </section>
     </nav>
   </div>
-  <router-outlet></router-outlet>
 </div>

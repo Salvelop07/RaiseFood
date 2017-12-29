@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DummyPageComponent implements OnInit {
 
+  pizzaPic: string = "../assets/samplepizzapic.jpg";
+
   constructor() { }
 
   ngOnInit() {

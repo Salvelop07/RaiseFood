@@ -6,7 +6,8 @@ import { UpdateProfileComponent } from '../update-profile/update-profile.compone
 import { DummyPageComponent } from '../dummy-page/dummy-page.component';
 
 const routes: Routes = [
-  { path: '', component: DummyPageComponent, pathMatch: 'full' },
+  { path: '', redirectTo: '/dummy-page', pathMatch: 'full' },
+  { path: 'dummy-page', component: DummyPageComponent },
   { path: 'confirm-profile', component: ConfirmProfileComponent },
   { path: 'update-profile', component: UpdateProfileComponent }
 ]
