@@ -17,7 +17,6 @@ export class UpdateProfileComponent implements OnInit {
 
   updateForm: FormGroup;
   userName: FormControl;
-  password: FormControl;
   newPassword: FormControl;
   confirmNewPassword: FormControl;
   email: FormControl;
@@ -41,9 +40,6 @@ export class UpdateProfileComponent implements OnInit {
 
   createFormControls() {
     this.userName = new FormControl('', [
-      Validators.required
-    ]);
-    this.password = new FormControl('', [
       Validators.required
     ]);
     this.newPassword = new FormControl('', [
@@ -70,7 +66,6 @@ export class UpdateProfileComponent implements OnInit {
       lastName: this.lastName,
       email: this.email,
       userName: this.userName,
-      password: this.password,
       newPassword: this.newPassword,
       confirmNewPassword: this.confirmNewPassword
     });
