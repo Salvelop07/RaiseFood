@@ -6,6 +6,7 @@ import com.rev.tfe.boot.domain.Ticket;
 
 public interface TicketService {
 	
+	List<Ticket> findAllTickets();
 	List<Ticket> findAllByUserId(Integer userId);
 
 }
