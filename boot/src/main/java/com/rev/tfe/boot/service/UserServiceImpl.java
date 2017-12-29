@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	UserRepository userRepo;
-	
+
 	@Autowired
 	ValidateUserObj validator;
 
@@ -36,11 +36,15 @@ public class UserServiceImpl implements UserService {
 				message = "An account with that email exists";
 			}
 		} else {
-			if (!findUserByUserName(u.getUserName()).getId().equals(u.getId())) {
-				message = "This username is taken";
+			if (findUserByUserName(u.getUserName()) != null) {
+				if (!findUserByUserName(u.getUserName()).getId().equals(u.getId())) {
+					message = "This username is taken";
+				}
 			}
-			if (!findUserByEmail(u.getEmail()).getId().equals(u.getId())) {
-				message = "This email is taken";
+			if (findUserByEmail(u.getEmail()) != null) {
+				if (!findUserByEmail(u.getEmail()).getId().equals(u.getId())) {
+					message = "This email is taken";
+				}
 			}
 		}
 		if (message == null)

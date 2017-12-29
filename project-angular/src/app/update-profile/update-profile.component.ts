@@ -25,7 +25,9 @@ export class UpdateProfileComponent implements OnInit {
 
   invalid: boolean = false;
   updatePassword: boolean = false;
+  passwordUpdated: boolean = false;
   errorMessage: string;
+  successMessage: string;
 
   constructor(
     private loginService: LoginService,
@@ -74,6 +76,7 @@ export class UpdateProfileComponent implements OnInit {
     this.email.setValue(this.currentUser.email);
     this.firstName.setValue(this.currentUser.firstName);
     this.lastName.setValue(this.currentUser.lastName);
+    this.firstName.setValue(this.currentUser.firstName);
   }
 
   resetInput(inputField: FormControl, val: any) {
@@ -88,6 +91,7 @@ export class UpdateProfileComponent implements OnInit {
     this.newPassword.markAsPristine();
     this.confirmNewPassword.reset();
     this.confirmNewPassword.markAsPristine();
+    this.invalid = false;
   }
 
   update() {
@@ -101,12 +105,27 @@ export class UpdateProfileComponent implements OnInit {
       role: 1,
     }
     if (this.updatePassword) {
-      if (this.newPassword != this.confirmNewPassword) {
+      if (this.newPassword.value != this.confirmNewPassword.value) {
         this.invalid = true;
         this.errorMessage = "New password and confirm password do not match";
+        this.newPassword.reset();
+        this.confirmNewPassword.reset();
+      }
+      else if (this.newPassword.value == this.currentUser.password) {
+        this.invalid = true;
+        this.errorMessage = "Password must be different than previous password";
+        this.newPassword.reset();
+        this.confirmNewPassword.reset();
       }
       else {
+        this.invalid = false;
         user.password = this.newPassword.value;
+        this.newPassword.reset();
+        this.confirmNewPassword.reset();
+        this.updatePassword = false;
+        this.passwordUpdated = true;
+        this.successMessage = "Password successfully updated";
+        this.updateForm.markAsPristine();
       }
     }
     if (!this.invalid) {
@@ -120,6 +139,7 @@ export class UpdateProfileComponent implements OnInit {
             console.log(validator.user);
             this.invalid = false;
             this.updateForm.markAsPristine();
+            this.passwordUpdated = false;
           }
         });
     }

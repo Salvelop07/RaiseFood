@@ -75,6 +75,18 @@
         </div>
       </div>
     </div>
+    <div *ngIf="passwordUpdated && updateForm.pristine" class="alert alert-success">
+      <div class="alert-items">
+        <div class="alert-item static">
+          <div class="alert-icon-wrapper">
+            <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+          </div>
+          <span class="alert-text">
+            {{successMessage}}
+          </span>
+        </div>
+      </div>
+    </div>
     <br>
     <button type="submit" class="btn btn-primary" [disabled]="updateForm.invalid || updateForm.pristine">Update</button>
   </section>
