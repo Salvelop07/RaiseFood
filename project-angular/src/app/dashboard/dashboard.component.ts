@@ -9,6 +9,9 @@ import { User } from '../beans/user';
 })
 export class DashboardComponent implements OnInit {
 
+  @Input()
+  branding: string;
+  
   loginModal: boolean = false;
   registerModal: boolean = false;
 
