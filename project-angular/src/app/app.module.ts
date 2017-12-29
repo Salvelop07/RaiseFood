@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -13,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
 import { ClarityModule } from 'clarity-angular';
 import { ConfirmProfileComponent } from './confirm-profile/confirm-profile.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
@@ -22,9 +24,11 @@ import { ConfirmProfileComponent } from './confirm-profile/confirm-profile.compo
     LoginComponent,
     UpdateProfileComponent,
     ConfirmProfileComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
