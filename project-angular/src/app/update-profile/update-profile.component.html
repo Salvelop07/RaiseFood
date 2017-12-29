@@ -10,6 +10,7 @@
           This field cannot be empty!
         </span>
       </label>
+      <a *ngIf="firstName.dirty" (click)="resetInput(firstName, currentUser.firstName)">cancel</a>
     </div>
     <div class="form-group">
       <label class="required">Last name</label>
@@ -20,6 +21,7 @@
           This field cannot be empty!
         </span>
       </label>
+      <a *ngIf="lastName.dirty" (click)="resetInput(lastName, currentUser.lastName)">cancel</a>
     </div>
     <div class="form-group">
       <label class="required">Email</label>
@@ -30,6 +32,7 @@
           This field cannot be empty!
         </span>
       </label>
+      <a *ngIf="email.dirty" (click)="resetInput(email, currentUser.email)">cancel</a>
     </div>
     <div class="form-group">
       <label class="required">Username</label>
@@ -40,23 +43,26 @@
           This field cannot be empty!
         </span>
       </label>
+      <a *ngIf="userName.dirty" (click)="resetInput(userName, currentUser.userName)">cancel</a>
     </div>
     <a *ngIf="!updatePassword" class="btn btn-link btn-sm" (click)="updatePassword = !updatePassword">Change password</a>
-    <a *ngIf="updatePassword" class="btn btn-link btn-sm" (click)="updatePassword = !updatePassword">Cancel password update</a>
-    <div class="form-group" *ngIf="updatePassword">
-      <label class="required">New Password</label>
-      <label for="new-password-input" aria-haspopup="true" role="tooltip" class="tooltip tooltip-right tooltip-validation tooltip-sm"
-        [class.invalid]="newPassword.invalid && newPassword.dirty">
-        <input type="password" id="new-password-input" class="form-control" formControlName="newPassword" placeholder="Enter new Password">
-      </label>
-    </div>
-    <div class="form-group" *ngIf="updatePassword">
-        <label class="required">Confirm New Password</label>
+    <a *ngIf="updatePassword" class="btn btn-link btn-sm" (click)="cancel()">Cancel password update</a>
+    <div *ngIf="updatePassword">
+      <div class="form-group">
+        <label [ngClass]="{'required': updatePassword == true}">New Password</label>
+        <label for="new-password-input" aria-haspopup="true" role="tooltip" class="tooltip tooltip-right tooltip-validation tooltip-sm"
+          [class.invalid]="newPassword.invalid && newPassword.dirty">
+          <input type="password" id="new-password-input" class="form-control" formControlName="newPassword" placeholder="Enter new Password">
+        </label>
+      </div>
+      <div class="form-group">
+        <label [ngClass]="{'required': updatePassword == true}">Confirm New Password</label>
         <label for="confirm-new-password-input" aria-haspopup="true" role="tooltip" class="tooltip tooltip-right tooltip-validation tooltip-sm"
           [class.invalid]="confirmNewPassword.invalid && confirmNewPassword.dirty">
           <input type="password" id="confirm-new-password-input" class="form-control" formControlName="confirmNewPassword" placeholder="Confirm new Password">
         </label>
       </div>
+    </div>
     <div *ngIf="invalid" class="alert alert-danger">
       <div class="alert-items">
         <div class="alert-item static">

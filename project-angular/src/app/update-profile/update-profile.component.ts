@@ -26,7 +26,7 @@ export class UpdateProfileComponent implements OnInit {
   invalid: boolean = false;
   updatePassword: boolean = false;
   errorMessage: string;
-  
+
   constructor(
     private loginService: LoginService,
   ) {
@@ -43,10 +43,10 @@ export class UpdateProfileComponent implements OnInit {
       Validators.required
     ]);
     this.newPassword = new FormControl('', [
-      Validators.required
+      // Validators.required
     ]);
     this.confirmNewPassword = new FormControl('', [
-      Validators.required
+      // Validators.required
     ]);
     this.email = new FormControl('', [
       Validators.required,
@@ -76,12 +76,27 @@ export class UpdateProfileComponent implements OnInit {
     this.lastName.setValue(this.currentUser.lastName);
   }
 
+  resetInput(inputField: FormControl, val: any) {
+    inputField.setValue(val);
+    inputField.markAsPristine();
+  }
+  
+  cancel() {
+    this.updatePassword = !this.updatePassword;
+    this.newPassword.reset();
+    this.newPassword.markAsPristine();
+    this.confirmNewPassword.reset();
+    this.confirmNewPassword.markAsPristine();
+  }
 
   update() {
-    if (this.loginService.hasEmptyFields(this.currentUser)) {
-      console.log("empty");
+    if (this.updatePassword) {
+      if (this.newPassword != this.confirmNewPassword) {
+        this.invalid = true;
+        this.errorMessage = "New password and confirm password do not match";
+      }
     }
-    else {
+    if (!this.invalid) {
       this.loginService.update(this.currentUser)
         .subscribe((validator) => {
           // do stuff here
