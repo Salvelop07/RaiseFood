@@ -1,4 +1,6 @@
 import { Component, OnInit, Output, Input } from '@angular/core';
+import { LoginService } from '../services/login.service';
+import { User } from '../beans/user';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,16 +9,25 @@ import { Component, OnInit, Output, Input } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  @Input()
   loginModal: boolean = false;
+  registerModal: boolean = false;
+  
+  currentUser: User;
+  isLoggedIn: boolean = false;
 
-  constructor() { }
+  constructor(
+    private loginService: LoginService
+  ) { }
 
   ngOnInit() {
   }
 
-  toggleModal() {
+  toggleLoginModal() {
     this.loginModal = !this.loginModal;
+  }
+
+  toggleRegisterModal() {
+    this.registerModal = !this.registerModal;
   }
 
 }

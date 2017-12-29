@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { LoginService } from '../services/login.service';
 import { ActivatedRoute } from '@angular/router';
 import { User } from '../beans/user';
@@ -27,6 +27,12 @@ export class RegisterComponent implements OnInit {
 
   invalid: boolean = false;
   errorMessage: string;
+
+  @Input()
+  registerModal: boolean;
+
+  @Output()
+  registerModalEmitter: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(
     private loginService: LoginService,
@@ -68,6 +74,11 @@ export class RegisterComponent implements OnInit {
       userName: this.userName,
       password: this.password
     });
+  }
+
+  closeModal() {
+    this.registerModal = false;
+    this.registerModalEmitter.emit(this.registerModal);
   }
 
   register() {

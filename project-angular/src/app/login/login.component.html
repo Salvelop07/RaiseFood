@@ -1,15 +1,7 @@
 <clr-modal [(clrModalOpen)]="loginModal">
-  <!-- <h3 class="modal-title">I have a nice title</h3>
-  <div class="modal-body">
-      <p>But not much to say...</p>
-  </div>
-  <div class="modal-footer">
-      <button type="button" class="btn btn-outline" (click)="loginModal = false">Cancel</button>
-      <button type="button" class="btn btn-primary" (click)="loginModal = false">Ok</button>
-  </div> -->
   <h3 class="modal-title">Login</h3>
   <div class="modal-body">
-    <form class="compact" novalidate [formGroup]="loginForm" (ngSubmit)="login()">
+    <form class="compact" novalidate [formGroup]="loginForm">
       <div class="form-block">
         <div class="form-group">
           <label class="required">Username</label>
@@ -48,6 +40,6 @@
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-outline" (click)="closeModal()">Cancel</button>
-    <button type="submit" class="btn btn-primary" (click)="closeModal()" [disabled]="loginForm.invalid">Login</button>
+    <button type="submit" class="btn btn-primary" (click)="closeModal(); login()" [disabled]="loginForm.invalid">Login</button>
   </div>
 </clr-modal>

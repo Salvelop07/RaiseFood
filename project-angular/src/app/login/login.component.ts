@@ -63,7 +63,7 @@ export class LoginComponent implements OnInit {
   }
 
   closeModal() {
-    this.loginModal=false
+    this.loginModal = false
     this.loginModalEmitter.emit(this.loginModal);
   }
 

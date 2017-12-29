@@ -1,12 +1,15 @@
-<app-login [loginModal]="loginModal" (loginModalEmitter)="toggleModal()"></app-login>
+<app-login *ngIf="!loginService.loggedIn" [loginModal]="loginModal" (loginModalEmitter)="toggleLoginModal()"></app-login>
+<app-register *ngIf="!loginService.loggedIn" [registerModal]="registerModal" (registerModalEmitter)="toggleRegisterModal()"></app-register>
 <div class="main-page">
   <header class="header header-1">
     <div class="branding">
       <span class="title">EagReats</span>
     </div>
     <div class="header-nav">
-      <a class="nav-link" (click)="toggleModal()"><span class="nav-text">Login</span></a>
+      <a class="nav-link" ><span class="nav-text">Menu</span></a>
+      <a *ngIf="!loginService.loggedIn" class="nav-link" (click)="toggleLoginModal()"><span class="nav-text">Login</span></a>
+      <a *ngIf="!loginService.loggedIn" class="nav-link" (click)="toggleRegisterModal()"><span class="nav-text">Register</span></a>
+      <a *ngIf="loginService.loggedIn" class="nav-link" (click)="profileView()"><span class="nav-text">{{currentUser.firstName}} {{currentUser.lastName}}</span></a>
     </div>
-
   </header>
 </div>
