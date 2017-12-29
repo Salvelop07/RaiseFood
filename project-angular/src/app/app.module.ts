@@ -15,6 +15,7 @@ import { UpdateProfileComponent } from './update-profile/update-profile.componen
 import { ClarityModule } from 'clarity-angular';
 import { ConfirmProfileComponent } from './confirm-profile/confirm-profile.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { DummyPageComponent } from './dummy-page/dummy-page.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     UpdateProfileComponent,
     ConfirmProfileComponent,
     DashboardComponent,
+    DummyPageComponent,
   ],
   imports: [
     BrowserModule,
