@@ -11,16 +11,15 @@ import { ValidatorUserObj } from '../beans/user-validator';
 
 @Injectable()
 export class LoginService {
-  // loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  loggedIn: boolean = false;
+  loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor(
     private uas: UserApiService
   ) { }
 
-  // isLoggedIn() {
-  //   return this.loggedIn.asObservable().share();
-  // }
+  isLoggedIn() {
+    return this.loggedIn.asObservable().share();
+  }
 
   hasEmptyFields(user: User): boolean {
     for (let key in user) {
@@ -36,8 +35,7 @@ export class LoginService {
       .map((user) => {
         if (user !== null) {
           localStorage.setItem('currentUser', JSON.stringify(user));
-          // this.loggedIn.next(true);
-          this.loggedIn = true;
+          this.loggedIn.next(true);
         }
         return user;
       });
@@ -47,8 +45,7 @@ export class LoginService {
     return this.uas.updateUser(user).map((validator) => {
       if (validator.user) {
         localStorage.setItem('currentUser', JSON.stringify(validator.user));
-        // this.loggedIn.next(true);
-        this.loggedIn = true;
+        this.loggedIn.next(true);
       }
       return validator;
     })
@@ -65,8 +62,7 @@ export class LoginService {
 
   logout() {
     localStorage.removeItem('currentUser');
-    // this.loggedIn.next(false);
-    this.loggedIn = false;
+    this.loggedIn.next(false);
   }
 
 }

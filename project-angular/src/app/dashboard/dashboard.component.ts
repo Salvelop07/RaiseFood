@@ -11,13 +11,20 @@ export class DashboardComponent implements OnInit {
 
   loginModal: boolean = false;
   registerModal: boolean = false;
-  
+
   currentUser: User;
   isLoggedIn: boolean = false;
 
   constructor(
     private loginService: LoginService
-  ) { }
+  ) {
+    this.loginService.isLoggedIn().subscribe((loggedIn) => {
+      if (loggedIn) {
+        this.isLoggedIn = true;
+        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      }
+    });
+  }
 
   ngOnInit() {
   }
@@ -29,5 +36,9 @@ export class DashboardComponent implements OnInit {
   toggleRegisterModal() {
     this.registerModal = !this.registerModal;
   }
+
+  // setUser() { // only run when signalled from login component 
+  //   this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  // }
 
 }
