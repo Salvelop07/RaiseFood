@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, Input } from '@angular/core';
 import { LoginService } from '../services/login.service';
 import { User } from '../beans/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,7 +17,8 @@ export class DashboardComponent implements OnInit {
   isLoggedIn: boolean = false;
 
   constructor(
-    private loginService: LoginService
+    private loginService: LoginService,
+    private router: Router
   ) {
     this.loginService.isLoggedIn().subscribe((loggedIn) => {
       if (loggedIn) {
@@ -35,6 +37,10 @@ export class DashboardComponent implements OnInit {
 
   toggleRegisterModal() {
     this.registerModal = !this.registerModal;
+  }
+
+  profileView() {
+    this.router.navigate(['confirm-profile'])
   }
 
   // setUser() { // only run when signalled from login component 
