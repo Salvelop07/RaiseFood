@@ -10,11 +10,14 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
+  @Input()
+  branding: string;
+  
   loginModal: boolean = false;
   registerModal: boolean = false;
 
   currentUser: User;
-  isLoggedIn: boolean = false;
+  isLoggedIn: boolean;
 
   constructor(
     private loginService: LoginService,

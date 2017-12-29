@@ -33,10 +33,10 @@ public class TicketLine {
 
 	@Autowired
 	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name="DISH_ID")
+	@JoinColumn(name="DISH_ID", nullable=false)
 	private Dish dish;
 
-	@Column(name="TICKET_LINE_QUANTITY")
+	@Column(name="TICKET_LINE_QUANTITY", nullable=false)
 	private Integer quantity;
 
 	public TicketLine() {
