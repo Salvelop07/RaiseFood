@@ -12,6 +12,7 @@ import { RegisterComponent } from './register/register.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
 import { ClarityModule } from 'clarity-angular';
+import { ConfirmProfileComponent } from './confirm-profile/confirm-profile.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { ClarityModule } from 'clarity-angular';
     RegisterComponent,
     LoginComponent,
     UpdateProfileComponent,
+    ConfirmProfileComponent,
   ],
   imports: [
     BrowserModule,

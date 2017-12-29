@@ -22,6 +22,9 @@ export class LoginComponent implements OnInit {
   userName: FormControl;
   password: FormControl;
 
+  invalid: boolean = false;
+  errorMessage: string;
+
   constructor(
     private loginService: LoginService,
     private route: ActivatedRoute,
@@ -62,14 +65,16 @@ export class LoginComponent implements OnInit {
       lastName: null,
       role: null,
     }
-    // if (this.loginService.hasEmptyFields(user)) {
-    //   console.log("empty");
-    // }
+    this.loginForm.reset();
     this.loginService.login(user)
       .subscribe((user) => {
-        // whatever is needed can be done here
-        // Just for testing
+        if (user === null) {
+          this.invalid = true;
+          this.errorMessage = "Invalid username or password";
+        }
+        else {
+          this.invalid = false;
+        }
       });
   }
-
 }

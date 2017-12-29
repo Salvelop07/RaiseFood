@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rev.tfe.boot.domain.User;
+import com.rev.tfe.boot.dto.ValidateUserObj;
 import com.rev.tfe.boot.service.UserService;
 
 @CrossOrigin(origins="http://localhost:4200")
@@ -25,7 +26,7 @@ public class UserController {
 	UserService userService;
 	
 	@RequestMapping(method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
-	public User updateUser(@RequestBody User u) {
+	public ValidateUserObj updateUser(@RequestBody User u) {
 		return userService.updateUser(u);
 	}
 	
