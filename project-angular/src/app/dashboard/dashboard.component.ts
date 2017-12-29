@@ -16,7 +16,7 @@ export class DashboardComponent implements OnInit {
   registerModal: boolean = false;
 
   currentUser: User;
-  isLoggedIn: boolean = false;
+  isLoggedIn: boolean;
 
   constructor(
     private loginService: LoginService
