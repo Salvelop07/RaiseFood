@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, Input } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,11 +7,16 @@ import { Component, OnInit, Output } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
+  @Input()
   loginModal: boolean = false;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  toggleModal() {
+    this.loginModal = !this.loginModal;
   }
 
 }

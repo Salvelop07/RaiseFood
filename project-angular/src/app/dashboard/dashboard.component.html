@@ -1,11 +1,11 @@
-<app-login [(loginModal)]="loginModal"></app-login>
+<app-login [loginModal]="loginModal" (loginModalEmitter)="toggleModal()"></app-login>
 <div class="main-page">
   <header class="header header-1">
     <div class="branding">
       <span class="title">EagReats</span>
     </div>
     <div class="header-nav">
-      <a class="nav-link" (click)="loginModal = !loginModal"><span class="nav-text">Login</span></a>
+      <a class="nav-link" (click)="toggleModal()"><span class="nav-text">Login</span></a>
     </div>
 
   </header>
