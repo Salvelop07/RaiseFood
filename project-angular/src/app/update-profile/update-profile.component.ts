@@ -79,8 +79,9 @@ export class UpdateProfileComponent implements OnInit {
   resetInput(inputField: FormControl, val: any) {
     inputField.setValue(val);
     inputField.markAsPristine();
+    this.invalid = false;
   }
-  
+
   cancel() {
     this.updatePassword = !this.updatePassword;
     this.newPassword.reset();
@@ -90,16 +91,36 @@ export class UpdateProfileComponent implements OnInit {
   }
 
   update() {
+    let user: User = {
+      id: this.currentUser.id, // can't be null, set to current id
+      userName: this.userName.value,
+      password: this.currentUser.password, // can't be null, set to current password
+      email: this.email.value,
+      firstName: this.firstName.value,
+      lastName: this.lastName.value,
+      role: 1,
+    }
     if (this.updatePassword) {
       if (this.newPassword != this.confirmNewPassword) {
         this.invalid = true;
         this.errorMessage = "New password and confirm password do not match";
       }
+      else {
+        user.password = this.newPassword.value;
+      }
     }
     if (!this.invalid) {
-      this.loginService.update(this.currentUser)
+      this.loginService.update(user)
         .subscribe((validator) => {
           // do stuff here
+          if (!validator.user) {
+            this.errorMessage = validator.message;
+            this.invalid = true;
+          } else {
+            console.log(validator.user);
+            this.invalid = false;
+            this.updateForm.markAsPristine();
+          }
         });
     }
   }

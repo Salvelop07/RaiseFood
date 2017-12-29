@@ -35,9 +35,16 @@ public class UserServiceImpl implements UserService {
 			if (findUserByEmail(u.getEmail()) != null) {
 				message = "An account with that email exists";
 			}
-			if (message == null)
-				user = userRepo.save(u);
+		} else {
+			if (!findUserByUserName(u.getUserName()).getId().equals(u.getId())) {
+				message = "This username is taken";
+			}
+			if (!findUserByEmail(u.getEmail()).getId().equals(u.getId())) {
+				message = "This email is taken";
+			}
 		}
+		if (message == null)
+			user = userRepo.save(u);
 		validator.setUser(user);
 		validator.setMessage(message);
 		return validator;

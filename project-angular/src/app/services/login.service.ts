@@ -52,9 +52,11 @@ export class LoginService {
   }
 
   update(user: User): Observable<ValidatorUserObj> {
-    return this.uas.updateUser(user).map((user) => {
-      localStorage.setItem('currentUser', JSON.stringify(user));
-      return user;
+    return this.uas.updateUser(user).map((validator) => {
+      if (validator.user) {
+        localStorage.setItem('currentUser', JSON.stringify(validator.user));
+      }
+      return validator;
     });
   }
 
