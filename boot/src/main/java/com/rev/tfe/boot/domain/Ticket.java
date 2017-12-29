@@ -38,7 +38,7 @@ public class Ticket {
 	
 	@Autowired
 	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
-	@JoinColumn(name="USER_ID")
+	@JoinColumn(name="USER_ID", nullable=false)
 	private User user;
 	
 	@Column(name="TOTAL", nullable=false)
@@ -77,7 +77,6 @@ public class Ticket {
 		this.timeResolved = timeResolved;
 		this.user = user;
 		this.total = total;
-		this.ticketLines = ticketLines;
 	}
 
 	public Integer getTicketId() {
