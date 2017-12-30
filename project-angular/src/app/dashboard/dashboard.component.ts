@@ -46,6 +46,10 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(['confirm-profile'])
   }
 
+  logout() {
+    this.loginService.logout();
+  }
+
   // setUser() { // only run when signalled from login component 
   //   this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   // }

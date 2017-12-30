@@ -68,6 +68,7 @@ export class LoginService {
   logout() {
     localStorage.removeItem('currentUser');
     this.loggedIn.next(false);
+    window.location.reload();
   }
 
 }
