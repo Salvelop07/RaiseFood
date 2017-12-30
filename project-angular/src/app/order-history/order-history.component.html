@@ -1,0 +1,46 @@
+<div class="container">
+
+<h2>ORDER HISTORY</h2>
+<clr-datagrid>
+  <clr-dg-column [clrDgField]="'ticketId'">
+    <ng-container *clrDgHideableColumn="{hidden: false}">
+      ORDER NUMBER
+    </ng-container>
+  </clr-dg-column>
+  <clr-dg-column [clrDgField]="'timeSubmitted'">
+    <ng-container *clrDgHideableColumn="{hidden: false}">
+      ORDER DATE
+    </ng-container>
+  </clr-dg-column>
+  <clr-dg-column [clrDgField]="'total'">
+    <ng-container *clrDgHideableColumn="{hidden: false}">
+      AMOUNT
+    </ng-container>
+  </clr-dg-column>
+  <clr-dg-column>
+    <ng-container *clrDgHideableColumn="{hidden: false}">
+      VIEW DETAIL
+    </ng-container>
+  </clr-dg-column>
+
+  <!-- Placeholder if there is no ticket. -->
+  <clr-dg-placeholder>We couldn't find any tickets!</clr-dg-placeholder>
+
+  <clr-dg-row *clrDgItems="let ticket of tickets" [clrDgItem]="ticket">
+      <clr-dg-cell>{{ticket.ticketId}}</clr-dg-cell>
+      <clr-dg-cell>{{ticket.timeSubmitted}}</clr-dg-cell>
+      <clr-dg-cell>{{ticket.total}}</clr-dg-cell>
+      <clr-dg-cell>
+        <clr-icon shape="eye" (click)="viewTicketDetail(ticket.ticketId)"></clr-icon>
+      </clr-dg-cell>
+  </clr-dg-row>
+
+  <clr-dg-footer>
+    {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
+    of {{pagination.totalItems}} tickets
+    
+    <clr-dg-pagination #pagination [clrDgPageSize]="10"></clr-dg-pagination>
+  </clr-dg-footer>
+
+</clr-datagrid>
+</div>

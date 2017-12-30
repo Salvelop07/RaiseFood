@@ -1,23 +1,94 @@
-<div>
-  <label>First Name</label>
-  <br>
-  <input type="text" [(ngModel)]="currentUser.firstName" placeholder="Firstname">
-  <br>
-  <label>Last Name</label>
-  <br>
-  <input type="text" [(ngModel)]="currentUser.lastName" placeholder="Lastname">
-  <br>
-  <label>Email</label>
-  <br>
-  <input type="text" [(ngModel)]="currentUser.email" placeholder="Email">
-  <br>
-  <label>Username</label>
-  <br>
-  <input type="text" [(ngModel)]="currentUser.userName" placeholder="Username">
-  <br>
-  <label>Password</label>
-  <br>
-  <input type="password" [(ngModel)]="currentUser.password" placeholder="Password">
-  <br>
-  <button (click)="update()">update</button>
-</div>
+<form class="compact" novalidate [formGroup]="updateForm" (ngSubmit)="update()">
+  <section class="form-block">
+    <label>Update Profile</label>
+    <div class="form-group">
+      <label class="required">First name</label>
+      <label for="firstName-input" aria-haspopup="true" role="tooltip" class="tooltip tooltip-right tooltip-validation tooltip-sm"
+        [class.invalid]="firstName.invalid && firstName.dirty">
+        <input type="text" id="firstName-input" class="form-control" formControlName="firstName" placeholder="First name">
+        <span class="tooltip-content">
+          This field cannot be empty!
+        </span>
+      </label>
+      <a *ngIf="firstName.dirty" (click)="resetInput(firstName, currentUser.firstName)">cancel</a>
+    </div>
+    <div class="form-group">
+      <label class="required">Last name</label>
+      <label for="lastName-input" aria-haspopup="true" role="tooltip" class="tooltip tooltip-right tooltip-validation tooltip-sm"
+        [class.invalid]="lastName.invalid && lastName.dirty">
+        <input type="text" id="lastName-input" class="form-control" formControlName="lastName" placeholder="Last name">
+        <span class="tooltip-content">
+          This field cannot be empty!
+        </span>
+      </label>
+      <a *ngIf="lastName.dirty" (click)="resetInput(lastName, currentUser.lastName)">cancel</a>
+    </div>
+    <div class="form-group">
+      <label class="required">Email</label>
+      <label for="email-input" aria-haspopup="true" role="tooltip" class="tooltip tooltip-right tooltip-validation tooltip-sm"
+        [class.invalid]="email.invalid && email.dirty">
+        <input type="text" id="email-input" class="form-control" formControlName="email" placeholder="Email">
+        <span class="tooltip-content">
+          This field cannot be empty!
+        </span>
+      </label>
+      <a *ngIf="email.dirty" (click)="resetInput(email, currentUser.email)">cancel</a>
+    </div>
+    <div class="form-group">
+      <label class="required">Username</label>
+      <label for="username-input" aria-haspopup="true" role="tooltip" class="tooltip tooltip-right tooltip-validation tooltip-sm"
+        [class.invalid]="userName.invalid && userName.dirty">
+        <input type="text" id="username-input" class="form-control" formControlName="userName" placeholder="Username">
+        <span class="tooltip-content">
+          This field cannot be empty!
+        </span>
+      </label>
+      <a *ngIf="userName.dirty" (click)="resetInput(userName, currentUser.userName)">cancel</a>
+    </div>
+    <a *ngIf="!updatePassword" class="btn btn-link btn-sm" (click)="updatePassword = !updatePassword">Change password</a>
+    <a *ngIf="updatePassword" class="btn btn-link btn-sm" (click)="cancel()">Cancel password update</a>
+    <div *ngIf="updatePassword">
+      <div class="form-group">
+        <label [ngClass]="{'required': updatePassword == true}">New Password</label>
+        <label for="new-password-input" aria-haspopup="true" role="tooltip" class="tooltip tooltip-right tooltip-validation tooltip-sm"
+          [class.invalid]="newPassword.invalid && newPassword.dirty">
+          <input type="password" id="new-password-input" class="form-control" formControlName="newPassword" placeholder="Enter new Password">
+        </label>
+      </div>
+      <div class="form-group">
+        <label [ngClass]="{'required': updatePassword == true}">Confirm New Password</label>
+        <label for="confirm-new-password-input" aria-haspopup="true" role="tooltip" class="tooltip tooltip-right tooltip-validation tooltip-sm"
+          [class.invalid]="confirmNewPassword.invalid && confirmNewPassword.dirty">
+          <input type="password" id="confirm-new-password-input" class="form-control" formControlName="confirmNewPassword" placeholder="Confirm new Password">
+        </label>
+      </div>
+    </div>
+    <div *ngIf="invalid" class="alert alert-danger">
+      <div class="alert-items">
+        <div class="alert-item static">
+          <div class="alert-icon-wrapper">
+            <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+          </div>
+          <span class="alert-text">
+            {{errorMessage}}
+          </span>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="passwordUpdated && updateForm.pristine" class="alert alert-success">
+      <div class="alert-items">
+        <div class="alert-item static">
+          <div class="alert-icon-wrapper">
+            <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+          </div>
+          <span class="alert-text">
+            {{successMessage}}
+          </span>
+        </div>
+      </div>
+    </div>
+    <br>
+    <button type="button" class="btn btn-outline" routerLink="/dummy-page">Cancel</button>
+    <button type="submit" class="btn btn-primary" [disabled]="updateForm.invalid || updateForm.pristine">Update</button>
+  </section>
+</form>

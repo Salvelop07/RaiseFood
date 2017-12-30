@@ -1,20 +1,13 @@
 package com.rev.tfe.boot.domain;
 
-import java.util.HashSet;
-import java.util.Set;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -37,9 +30,9 @@ public class Dish {
 	@Column(name="DISH_DESCRIPTION", nullable=true)
 	private String description;
 
-	@Autowired
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "dish", cascade=CascadeType.ALL)
-	private Set<TicketLine> ticketLines = new HashSet<TicketLine>();
+//	@Autowired
+//	@OneToMany(fetch = FetchType.LAZY, mappedBy = "dish", cascade=CascadeType.ALL)
+//	private Set<TicketLine> ticketLines = new HashSet<TicketLine>();
 	
 /*	@Autowired
 	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
@@ -55,14 +48,14 @@ public class Dish {
 		super();
 	}
 	
-	public Dish(String name, Double price, String description, Set<TicketLine> ticketLines) {
+	public Dish(String name, Double price, String description) {
 		super();
 		this.name = name;
 		this.price = price;
 		this.description = description;
 	}
 
-	public Dish(Integer id, String name, Double price, String description, Set<TicketLine> ticketLines) {
+	public Dish(Integer id, String name, Double price, String description) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -102,17 +95,22 @@ public class Dish {
 		this.description = description;
 	}
 
-	public Set<TicketLine> getTicketLines() {
-		return ticketLines;
-	}
-
-	public void setTicketLines(Set<TicketLine> ticketLines) {
-		this.ticketLines = ticketLines;
-	}
-
 	@Override
 	public String toString() {
-		return "Dish [id=" + id + ", name=" + name + ", price=" + price + ", description=" + description
-				+ ", ticketLines=" + ticketLines + "]";
+		return "Dish [id=" + id + ", name=" + name + ", price=" + price + ", description=" + description + "]";
 	}
+
+//	public Set<TicketLine> getTicketLines() {
+//		return ticketLines;
+//	}
+//
+//	public void setTicketLines(Set<TicketLine> ticketLines) {
+//		this.ticketLines = ticketLines;
+//	}
+
+//	@Override
+//	public String toString() {
+//		return "Dish [id=" + id + ", name=" + name + ", price=" + price + ", description=" + description
+//				+ ", ticketLines=" + ticketLines + "]";
+//	}
 }
