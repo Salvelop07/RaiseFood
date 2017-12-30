@@ -1,5 +1,4 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -14,8 +13,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
 import { ClarityModule } from 'clarity-angular';
 import { ConfirmProfileComponent } from './confirm-profile/confirm-profile.component';
+import { OrderHistoryComponent } from './order-history/order-history.component';
+import { TicketService } from './services/ticket.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DummyPageComponent } from './dummy-page/dummy-page.component';
+import { OrderDetailComponent } from './order-detail/order-detail.component';
 
 
 @NgModule({
@@ -25,19 +27,20 @@ import { DummyPageComponent } from './dummy-page/dummy-page.component';
     LoginComponent,
     UpdateProfileComponent,
     ConfirmProfileComponent,
+    OrderHistoryComponent,
     DashboardComponent,
     DummyPageComponent,
+    OrderDetailComponent,
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
     ClarityModule.forRoot()
   ],
-  providers: [LoginService, UserApiService],
+  providers: [LoginService, UserApiService, TicketService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
