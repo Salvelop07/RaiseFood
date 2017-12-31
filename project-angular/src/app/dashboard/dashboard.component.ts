@@ -42,8 +42,12 @@ export class DashboardComponent implements OnInit {
     this.registerModal = !this.registerModal;
   }
 
+  orderHistoryView() {
+    this.router.navigate(['order-history']);
+  }
+
   profileView() {
-    this.router.navigate(['confirm-profile'])
+    this.router.navigate(['confirm-profile']);
   }
 
   logout() {

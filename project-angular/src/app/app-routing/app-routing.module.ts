@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'dummy-page', component: DummyPageComponent },
   { path: 'confirm-profile', component: ConfirmProfileComponent },
   { path: 'update-profile', component: UpdateProfileComponent, canActivate: [AuthGuard] },
-  { path: 'order-history', component: OrderDetailComponent }
+  { path: 'order-history', component: OrderHistoryComponent, canActivate: [AuthGuard] }
 ]
 
 @NgModule({
@@ -22,6 +22,7 @@ const routes: Routes = [
   ],
   exports: [
     RouterModule
-  ]
+  ],
+  providers: [AuthGuard]
 })
 export class AppRoutingModule { }
