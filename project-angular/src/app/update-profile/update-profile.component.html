@@ -46,7 +46,7 @@
       <a *ngIf="userName.dirty" (click)="resetInput(userName, currentUser.userName)">cancel</a>
     </div>
     <a *ngIf="!updatePassword" class="btn btn-link btn-sm" (click)="updatePassword = !updatePassword">Change password</a>
-    <a *ngIf="updatePassword" class="btn btn-link btn-sm" (click)="cancel()">Cancel password update</a>
+    <a *ngIf="updatePassword" class="btn btn-link btn-sm" (click)="cancelPassword()">Cancel password update</a>
     <div *ngIf="updatePassword">
       <div class="form-group">
         <label [ngClass]="{'required': updatePassword == true}">New Password</label>
@@ -88,7 +88,11 @@
       </div>
     </div>
     <br>
+<<<<<<< HEAD
     <button type="button" class="btn btn-outline" routerLink="landing">Cancel</button>
+=======
+    <button type="button" class="btn btn-outline" (click)="cancel()">Cancel</button>
+>>>>>>> refs/remotes/origin/development
     <button type="submit" class="btn btn-primary" [disabled]="updateForm.invalid || updateForm.pristine">Update</button>
   </section>
 </form>

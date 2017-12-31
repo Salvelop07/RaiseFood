@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <section class="sidenav-content">
     <section class="nav-group">
         <input id="user-ops" type="checkbox">
@@ -18,3 +19,16 @@
         </ul>
       </section>
 </section>
+=======
+<clr-vertical-nav-group routerLinkActive="active">
+  <a hidden aria-hidden="true">
+  </a>
+  <clr-icon shape="user" clrVerticalNavIcon></clr-icon>
+  {{currentUser.firstName}} {{currentUser.lastName}}
+  <clr-vertical-nav-group-children *clrIfExpanded="true">
+      <a clrVerticalNavLink (click)="orderHistoryView()" routerLinkActive="active">Order History</a>
+      <a clrVerticalNavLink (click)="profileView()" routerLinkActive="active">Update Profile</a>
+      <a clrVerticalNavLink (click)="logout()">Logout</a>
+  </clr-vertical-nav-group-children>
+</clr-vertical-nav-group>
+>>>>>>> refs/remotes/origin/development

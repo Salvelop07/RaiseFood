@@ -1,5 +1,6 @@
 <app-login [loginModal]="loginModal" (loginModalEmitter)="toggleLoginModal()"></app-login>
 <app-register [registerModal]="registerModal" (registerModalEmitter)="toggleRegisterModal()"></app-register>
+<<<<<<< HEAD
 <section class="sidenav-content">
   <a class="nav-link" (click)="toggleLoginModal()">
     <span class="nav-text">Login</span>
@@ -8,3 +9,7 @@
     <span class="nav-text">Register</span>
   </a>
 </section>
+=======
+<a clrVerticalNavLink (click)="toggleLoginModal()" routerLinkActive="active">Login</a>
+<a clrVerticalNavLink (click)="toggleRegisterModal()" routerLinkActive="active">Register</a>
+>>>>>>> refs/remotes/origin/development
