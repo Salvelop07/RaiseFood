@@ -30,17 +30,5 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  // toggleLoginModal() {
-  //   this.loginModal = !this.loginModal;
-  // }
-
-  // toggleRegisterModal() {
-  //   this.registerModal = !this.registerModal;
-  // }
-
-  // setUser() { // only run when signalled from login component 
-  //   this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-  // }
-
+  
 }
