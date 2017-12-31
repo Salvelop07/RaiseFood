@@ -14,7 +14,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
 import { ClarityModule } from 'clarity-angular';
 import { ConfirmProfileComponent } from './confirm-profile/confirm-profile.component';
+import { OrderHistoryComponent } from './order-history/order-history.component';
+import { TicketService } from './services/ticket.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { OrderDetailComponent } from './order-detail/order-detail.component';
+import { AnonSidenavComponent } from './anon-sidenav/anon-sidenav.component';
+import { CustSidenavComponent } from './cust-sidenav/cust-sidenav.component';
+import { AdminSidenavComponent } from './admin-sidenav/admin-sidenav.component';
+import { LandingComponent } from './landing/landing.component';
 
 
 @NgModule({
@@ -24,7 +31,13 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     LoginComponent,
     UpdateProfileComponent,
     ConfirmProfileComponent,
+    OrderHistoryComponent,
     DashboardComponent,
+    OrderDetailComponent,
+    AnonSidenavComponent,
+    CustSidenavComponent,
+    AdminSidenavComponent,
+    LandingComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +48,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     FormsModule,
     ClarityModule.forRoot()
   ],
-  providers: [LoginService, UserApiService],
+  providers: [LoginService, UserApiService, TicketService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

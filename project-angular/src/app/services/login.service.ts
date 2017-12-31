@@ -18,6 +18,11 @@ export class LoginService {
   ) { }
 
   isLoggedIn() {
+    if (JSON.parse(localStorage.getItem('currentUser'))) {
+      this.loggedIn.next(true);
+    } else {
+      this.loggedIn.next(false);
+    }
     return this.loggedIn.asObservable().share();
   }
 
@@ -63,6 +68,7 @@ export class LoginService {
   logout() {
     localStorage.removeItem('currentUser');
     this.loggedIn.next(false);
+    window.location.reload();
   }
 
 }

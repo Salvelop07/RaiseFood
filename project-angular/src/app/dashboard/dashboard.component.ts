@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, Input } from '@angular/core';
 import { LoginService } from '../services/login.service';
 import { User } from '../beans/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,36 +10,29 @@ import { User } from '../beans/user';
 })
 export class DashboardComponent implements OnInit {
 
-  loginModal: boolean = false;
-  registerModal: boolean = false;
+  @Input()
+  branding: string;
 
   currentUser: User;
-  isLoggedIn: boolean = false;
+  isLoggedIn: boolean;
+  admin: boolean = false;
 
   constructor(
-    private loginService: LoginService
+    private loginService: LoginService,
+    private router: Router
   ) {
     this.loginService.isLoggedIn().subscribe((loggedIn) => {
       if (loggedIn) {
         this.isLoggedIn = true;
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (this.currentUser.role == 2) {
+          this.admin = true;
+        }
       }
     });
   }
 
   ngOnInit() {
   }
-
-  toggleLoginModal() {
-    this.loginModal = !this.loginModal;
-  }
-
-  toggleRegisterModal() {
-    this.registerModal = !this.registerModal;
-  }
-
-  // setUser() { // only run when signalled from login component 
-  //   this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-  // }
-
+  
 }
