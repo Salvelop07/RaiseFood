@@ -1,28 +1,10 @@
+<app-login [loginModal]="loginModal" (loginModalEmitter)="toggleLoginModal()"></app-login>
+<app-register [registerModal]="registerModal" (registerModalEmitter)="toggleRegisterModal()"></app-register>
 <section class="sidenav-content">
-  <a *ngIf="!isLoggedIn" class="nav-link" (click)="toggleLoginModal()">
+  <a class="nav-link" (click)="toggleLoginModal()">
     <span class="nav-text">Login</span>
   </a>
-  <a *ngIf="!isLoggedIn" class="nav-link" (click)="toggleRegisterModal()">
+  <a class="nav-link" (click)="toggleRegisterModal()">
     <span class="nav-text">Register</span>
   </a>
-  <section *ngIf="isLoggedIn" class="nav-group">
-    <input id="user-ops" type="checkbox">
-    <label for="user-ops">{{currentUser.firstName}} {{currentUser.lastName}}</label>
-    <ul class="nav-list">
-      <li>
-        <a class="nav-link">Place an Order</a>
-      </li>
-      <li>
-        <a class="nav-link" (click)="orderHistoryView()">Order History</a>
-      </li>
-      <li>
-        <a class="nav-link" (click)="profileView()">Update Profile</a>
-      </li>
-      <li>
-        <a class="nav-link" (click)="logout()">Logout</a>
-      </li>
-    </ul>
-    <!-- <input id="tab1" type="checkbox">
-        <label for="tab1"(click)="profileView()">{{currentUser.firstName}} {{currentUser.lastName}}</label> -->
-  </section>
 </section>

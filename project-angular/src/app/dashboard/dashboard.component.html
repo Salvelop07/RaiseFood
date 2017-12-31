@@ -1,5 +1,3 @@
-<app-login *ngIf="!isLoggedIn" [loginModal]="loginModal" (loginModalEmitter)="toggleLoginModal()"></app-login>
-<app-register *ngIf="!isLoggedIn" [registerModal]="registerModal" (registerModalEmitter)="toggleRegisterModal()"></app-register>
 <div class="main-container">
   <header class="header header-1">
     <div class="branding">
@@ -17,35 +15,7 @@
     </div>
     <nav class="sidenav">
       <app-anon-sidenav *ngIf="!isLoggedIn" [currentUser]="currentUser"></app-anon-sidenav>
+      <app-cust-sidenav *ngIf="isLoggedIn" [currentUser]="currentUser"></app-cust-sidenav>
     </nav>
-
-    <!-- <nav class="sidenav">
-      <section class="sidenav-content">
-        <a *ngIf="!isLoggedIn" class="nav-link" (click)="toggleLoginModal()">
-          <span class="nav-text">Login</span>
-        </a>
-        <a *ngIf="!isLoggedIn" class="nav-link" (click)="toggleRegisterModal()">
-          <span class="nav-text">Register</span>
-        </a>
-        <section *ngIf="isLoggedIn" class="nav-group">
-          <input id="user-ops" type="checkbox">
-          <label for="user-ops">{{currentUser.firstName}} {{currentUser.lastName}}</label>
-          <ul class="nav-list">
-            <li>
-              <a class="nav-link">Place an Order</a>
-            </li>
-            <li>
-              <a class="nav-link" (click)="orderHistoryView()">Order History</a>
-            </li>
-            <li>
-              <a class="nav-link" (click)="profileView()">Update Profile</a>
-            </li>
-            <li>
-              <a class="nav-link" (click)="logout()">Logout</a>
-            </li>
-          </ul>
-        </section>
-      </section>
-    </nav> -->
   </div>
 </div>

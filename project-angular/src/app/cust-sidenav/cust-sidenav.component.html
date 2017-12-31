@@ -1,3 +1,20 @@
-<p>
-  cust-sidenav works!
-</p>
+<section class="sidenav-content">
+    <section class="nav-group">
+        <input id="user-ops" type="checkbox">
+        <label for="user-ops">{{currentUser.firstName}} {{currentUser.lastName}}</label>
+        <ul class="nav-list">
+          <li>
+            <a class="nav-link">Place an Order</a>
+          </li>
+          <li>
+            <a class="nav-link" (click)="orderHistoryView()">Order History</a>
+          </li>
+          <li>
+            <a class="nav-link" (click)="profileView()">Update Profile</a>
+          </li>
+          <li>
+            <a class="nav-link" (click)="logout()">Logout</a>
+          </li>
+        </ul>
+      </section>
+</section>
