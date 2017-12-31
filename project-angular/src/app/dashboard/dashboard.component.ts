@@ -15,6 +15,7 @@ export class DashboardComponent implements OnInit {
 
   currentUser: User;
   isLoggedIn: boolean;
+  admin: boolean = false;
 
   constructor(
     private loginService: LoginService,
@@ -24,6 +25,9 @@ export class DashboardComponent implements OnInit {
       if (loggedIn) {
         this.isLoggedIn = true;
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (this.currentUser.role == 2) {
+          this.admin = true;
+        }
       }
     });
   }

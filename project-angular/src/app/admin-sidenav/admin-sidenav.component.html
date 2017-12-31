@@ -1,3 +1,14 @@
-<p>
-  admin-sidenav works!
-</p>
+<section class="sidenav-content">
+    <section class="nav-group">
+        <input id="user-ops" type="checkbox">
+        <label for="user-ops">Management</label>
+        <ul class="nav-list">
+          <li>
+            <a class="nav-link" (click)="profileView()">Update Profile</a>
+          </li>
+          <li>
+            <a class="nav-link" (click)="logout()">Logout</a>
+          </li>
+        </ul>
+      </section>
+</section>

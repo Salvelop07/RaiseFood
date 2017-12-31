@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { User } from '../beans/user';
+import { LoginService } from '../services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-sidenav',
@@ -7,9 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminSidenavComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  currentUser: User;
+
+  constructor(
+    private loginService: LoginService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
+  }
+
+  profileView() {
+    this.router.navigate(['confirm-profile']);
+  }
+
+  logout() {
+    this.loginService.logout();
+    this.router.navigate(['dummy-page']);
   }
 
 }
