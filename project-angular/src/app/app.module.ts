@@ -17,7 +17,6 @@ import { ConfirmProfileComponent } from './confirm-profile/confirm-profile.compo
 import { OrderHistoryComponent } from './order-history/order-history.component';
 import { TicketService } from './services/ticket.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { DummyPageComponent } from './dummy-page/dummy-page.component';
 import { OrderDetailComponent } from './order-detail/order-detail.component';
 import { AnonSidenavComponent } from './anon-sidenav/anon-sidenav.component';
 import { CustSidenavComponent } from './cust-sidenav/cust-sidenav.component';
@@ -34,7 +33,6 @@ import { LandingComponent } from './landing/landing.component';
     ConfirmProfileComponent,
     OrderHistoryComponent,
     DashboardComponent,
-    DummyPageComponent,
     OrderDetailComponent,
     AnonSidenavComponent,
     CustSidenavComponent,

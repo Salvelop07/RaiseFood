@@ -27,7 +27,7 @@ export class AdminSidenavComponent implements OnInit {
 
   logout() {
     this.loginService.logout();
-    this.router.navigate(['dummy-page']);
+    this.router.navigate(['landing']);
   }
 
 }

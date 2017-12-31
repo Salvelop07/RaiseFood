@@ -15,7 +15,7 @@ export class AuthAdminGuard implements CanActivate {
     if (currentUser && (currentUser.role == 2)) {
       return true;
     }
-    this.router.navigate(['dummy-page'], { queryParams: { returnUrl: state.url }})
+    this.router.navigate(['landing'], { queryParams: { returnUrl: state.url }})
     return false;
   }
 }
