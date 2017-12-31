@@ -30,5 +30,4 @@ export class AnonSidenavComponent implements OnInit {
     this.registerModal = !this.registerModal;
   }
 
-
 }
