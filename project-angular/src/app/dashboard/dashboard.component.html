@@ -3,12 +3,17 @@
     <div class="branding">
       <span class="title">{{branding}}</span>
     </div>
-    <div class="header-nav">
-      <a class="nav-link">
-        <span class="nav-text">Menu</span>
-      </a>
-    </div>
   </header>
+  <nav class="subnav">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link active">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">Menu</a>
+      </li>
+    </ul>
+  </nav>
   <div class="content-container">
     <div class="content-area">
       <router-outlet></router-outlet>
