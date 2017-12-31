@@ -19,6 +19,8 @@ import { TicketService } from './services/ticket.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DummyPageComponent } from './dummy-page/dummy-page.component';
 import { OrderDetailComponent } from './order-detail/order-detail.component';
+import { AnonSidenavComponent } from './anon-sidenav/anon-sidenav.component';
+import { CustSidenavComponent } from './cust-sidenav/cust-sidenav.component';
 
 
 @NgModule({
@@ -32,6 +34,8 @@ import { OrderDetailComponent } from './order-detail/order-detail.component';
     DashboardComponent,
     DummyPageComponent,
     OrderDetailComponent,
+    AnonSidenavComponent,
+    CustSidenavComponent,
   ],
   imports: [
     BrowserModule,

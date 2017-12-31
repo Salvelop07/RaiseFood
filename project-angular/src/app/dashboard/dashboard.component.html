@@ -16,6 +16,10 @@
       <router-outlet></router-outlet>
     </div>
     <nav class="sidenav">
+      <app-anon-sidenav *ngIf="!isLoggedIn" [currentUser]="currentUser"></app-anon-sidenav>
+    </nav>
+
+    <!-- <nav class="sidenav">
       <section class="sidenav-content">
         <a *ngIf="!isLoggedIn" class="nav-link" (click)="toggleLoginModal()">
           <span class="nav-text">Login</span>
@@ -40,10 +44,8 @@
               <a class="nav-link" (click)="logout()">Logout</a>
             </li>
           </ul>
-          <!-- <input id="tab1" type="checkbox">
-          <label for="tab1"(click)="profileView()">{{currentUser.firstName}} {{currentUser.lastName}}</label> -->
         </section>
       </section>
-    </nav>
+    </nav> -->
   </div>
 </div>
