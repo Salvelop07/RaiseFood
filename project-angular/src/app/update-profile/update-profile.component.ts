@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../services/login.service';
 import { User } from '../beans/user';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-update-profile',
@@ -31,6 +31,7 @@ export class UpdateProfileComponent implements OnInit {
 
   constructor(
     private loginService: LoginService,
+    private router: Router
   ) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
@@ -85,13 +86,17 @@ export class UpdateProfileComponent implements OnInit {
     this.invalid = false;
   }
 
-  cancel() {
+  cancelPassword() {
     this.updatePassword = !this.updatePassword;
     this.newPassword.reset();
     this.newPassword.markAsPristine();
     this.confirmNewPassword.reset();
     this.confirmNewPassword.markAsPristine();
     this.invalid = false;
+  }
+
+  cancel() {
+    this.router.navigate(['landing']);
   }
 
   update() {

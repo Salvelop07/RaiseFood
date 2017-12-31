@@ -1,10 +1,4 @@
 <app-login [loginModal]="loginModal" (loginModalEmitter)="toggleLoginModal()"></app-login>
 <app-register [registerModal]="registerModal" (registerModalEmitter)="toggleRegisterModal()"></app-register>
-<section class="sidenav-content">
-  <a class="nav-link" (click)="toggleLoginModal()">
-    <span class="nav-text">Login</span>
-  </a>
-  <a class="nav-link" (click)="toggleRegisterModal()">
-    <span class="nav-text">Register</span>
-  </a>
-</section>
+<a clrVerticalNavLink (click)="toggleLoginModal()" routerLinkActive="active">Login</a>
+<a clrVerticalNavLink (click)="toggleRegisterModal()" routerLinkActive="active">Register</a>

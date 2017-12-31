@@ -45,6 +45,10 @@ export class ConfirmProfileComponent implements OnInit {
     });
   }
 
+  cancel() {
+    this.router.navigate(['landing']);
+  }
+
   confirm() {
     if (this.password.value != this.currentUser.password) {
       this.invalid = true;

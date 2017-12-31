@@ -15,10 +15,10 @@
     </div>
     <!-- <nav class="sidenav"> -->
     <clr-vertical-nav>
-      <app-anon-sidenav *ngIf="!isLoggedIn" [currentUser]="currentUser"></app-anon-sidenav>
-      <app-cust-sidenav *ngIf="isLoggedIn && !admin" [currentUser]="currentUser"></app-cust-sidenav>
       <app-admin-sidenav *ngIf="isLoggedIn && admin" [currentUser]="currentUser"></app-admin-sidenav>
+      <app-cust-sidenav *ngIf="isLoggedIn && !admin" [currentUser]="currentUser"></app-cust-sidenav>
       <app-general-sidenav *ngIf="!admin"></app-general-sidenav>
+      <app-anon-sidenav *ngIf="!isLoggedIn" [currentUser]="currentUser"></app-anon-sidenav>
     </clr-vertical-nav>
 
     <!-- </nav> -->
