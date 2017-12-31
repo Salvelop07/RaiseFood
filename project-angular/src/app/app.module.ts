@@ -22,6 +22,7 @@ import { AnonSidenavComponent } from './anon-sidenav/anon-sidenav.component';
 import { CustSidenavComponent } from './cust-sidenav/cust-sidenav.component';
 import { AdminSidenavComponent } from './admin-sidenav/admin-sidenav.component';
 import { LandingComponent } from './landing/landing.component';
+import { GeneralSidenavComponent } from './general-sidenav/general-sidenav.component';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { LandingComponent } from './landing/landing.component';
     CustSidenavComponent,
     AdminSidenavComponent,
     LandingComponent,
+    GeneralSidenavComponent,
   ],
   imports: [
     BrowserModule,
