@@ -18,7 +18,7 @@
     <div class="content-area">
       <router-outlet></router-outlet>
     </div>
-    <clr-vertical-nav>
+    <clr-vertical-nav [clrVerticalNavCollapsible]="true" [(clrVerticalNavCollapsed)]="collapsed">
       <app-admin-sidenav *ngIf="isLoggedIn && admin" [currentUser]="currentUser"></app-admin-sidenav>
       <app-cust-sidenav *ngIf="isLoggedIn && !admin" [currentUser]="currentUser"></app-cust-sidenav>
       <app-general-sidenav *ngIf="!admin"></app-general-sidenav>
