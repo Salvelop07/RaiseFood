@@ -1,25 +1,3 @@
-<<<<<<< HEAD
-<section class="sidenav-content">
-    <section class="nav-group">
-        <input id="user-ops" type="checkbox">
-        <label for="user-ops">{{currentUser.firstName}} {{currentUser.lastName}}</label>
-        <ul class="nav-list">
-          <li>
-            <a class="nav-link">Place an Order</a>
-          </li>
-          <li>
-            <a class="nav-link" (click)="orderHistoryView()">Order History</a>
-          </li>
-          <li>
-            <a class="nav-link" (click)="profileView()">Update Profile</a>
-          </li>
-          <li>
-            <a class="nav-link" (click)="logout()">Logout</a>
-          </li>
-        </ul>
-      </section>
-</section>
-=======
 <clr-vertical-nav-group routerLinkActive="active">
   <a hidden aria-hidden="true">
   </a>
@@ -31,4 +9,3 @@
       <a clrVerticalNavLink (click)="logout()">Logout</a>
   </clr-vertical-nav-group-children>
 </clr-vertical-nav-group>
->>>>>>> refs/remotes/origin/development

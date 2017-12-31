@@ -9,11 +9,7 @@ import { AuthGuard } from '../guards/auth.guard';
 import { LandingComponent } from '../landing/landing.component';
 
 const routes: Routes = [
-<<<<<<< HEAD
-  { path: '', redirectTo: '/dummy-page', pathMatch: 'full' },
-=======
   { path: '', redirectTo: 'landing', pathMatch: 'full' },
->>>>>>> refs/remotes/origin/development
   { path: 'landing', component: LandingComponent },
   { path: 'confirm-profile', component: ConfirmProfileComponent },
   { path: 'update-profile', component: UpdateProfileComponent, canActivate: [AuthGuard] },
