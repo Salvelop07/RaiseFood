@@ -6,13 +6,14 @@ import { UpdateProfileComponent } from '../update-profile/update-profile.compone
 import { DummyPageComponent } from '../dummy-page/dummy-page.component';
 import { OrderHistoryComponent } from '../order-history/order-history.component';
 import { OrderDetailComponent } from '../order-detail/order-detail.component';
+import { AuthGuard } from '../guards/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dummy-page', pathMatch: 'full' },
   { path: 'dummy-page', component: DummyPageComponent },
   { path: 'confirm-profile', component: ConfirmProfileComponent },
-  { path: 'update-profile', component: UpdateProfileComponent },
-  { path: 'order-history', component: OrderDetailComponent}
+  { path: 'update-profile', component: UpdateProfileComponent, canActivate: [AuthGuard] },
+  { path: 'order-history', component: OrderDetailComponent }
 ]
 
 @NgModule({
