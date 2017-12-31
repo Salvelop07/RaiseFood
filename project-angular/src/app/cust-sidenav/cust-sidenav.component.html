@@ -10,7 +10,6 @@
   <clr-icon shape="user" clrVerticalNavIcon></clr-icon>
   {{currentUser.firstName}} {{currentUser.lastName}}
   <clr-vertical-nav-group-children *clrIfExpanded="true">
-      <a clrVerticalNavLink>Place an Order</a>
       <a clrVerticalNavLink (click)="orderHistoryView()" routerLinkActive="active">Order History</a>
       <a clrVerticalNavLink (click)="profileView()" routerLinkActive="active">Update Profile</a>
       <a clrVerticalNavLink (click)="logout()">Logout</a>
