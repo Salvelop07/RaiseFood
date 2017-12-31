@@ -86,6 +86,7 @@ export class LoginComponent implements OnInit {
         }
         else {
           this.invalid = false;
+          this.closeModal();
         }
       });
   }
