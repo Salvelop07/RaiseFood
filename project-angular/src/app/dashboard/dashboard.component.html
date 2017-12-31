@@ -13,10 +13,14 @@
     <div class="content-area">
       <router-outlet></router-outlet>
     </div>
-    <nav class="sidenav">
+    <!-- <nav class="sidenav"> -->
+    <clr-vertical-nav>
       <app-anon-sidenav *ngIf="!isLoggedIn" [currentUser]="currentUser"></app-anon-sidenav>
+      <app-general-sidenav *ngIf="isLoggedIn && !admin" [currentUser]="currentUser"></app-cust-sidenav>
       <app-cust-sidenav *ngIf="isLoggedIn && !admin" [currentUser]="currentUser"></app-cust-sidenav>
       <app-admin-sidenav *ngIf="isLoggedIn && admin" [currentUser]="currentUser"></app-admin-sidenav>
-    </nav>
+    </clr-vertical-nav>
+
+    <!-- </nav> -->
   </div>
 </div>
