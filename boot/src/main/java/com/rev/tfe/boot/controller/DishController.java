@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,13 +24,14 @@ public class DishController {
 	public List<Dish> findAll() {
 		return dService.findAllDish();
 	}
+	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
 	public Dish findDishesById(@PathVariable int id) {
 		return dService.findDishById(id);
 	}
 	
-	@RequestMapping(method=RequestMethod.POST)
-	public void addDish(@PathVariable Dish dish) {
+	@RequestMapping(value="/add", method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
+	public void addDish(@RequestBody Dish dish) {
 		dService.addDish(dish);
 	}
 }
