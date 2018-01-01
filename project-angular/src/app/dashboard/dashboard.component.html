@@ -17,8 +17,12 @@
   <div class="content-container">
     <div class="content-area">
       <router-outlet></router-outlet>
+      <hr/>
+      <footer>
+        Powered by EagReats
+      </footer>
     </div>
-    <clr-vertical-nav [clrVerticalNavCollapsible]="true" [(clrVerticalNavCollapsed)]="collapsed">
+    <clr-vertical-nav [clrVerticalNavCollapsible]="false" [(clrVerticalNavCollapsed)]="collapsed">
       <app-admin-sidenav *ngIf="isLoggedIn && admin" [currentUser]="currentUser"></app-admin-sidenav>
       <app-cust-sidenav *ngIf="isLoggedIn && !admin" [currentUser]="currentUser"></app-cust-sidenav>
       <app-general-sidenav *ngIf="!admin"></app-general-sidenav>
