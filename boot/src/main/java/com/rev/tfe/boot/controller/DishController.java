@@ -30,7 +30,7 @@ public class DishController {
 		return dService.findDishById(id);
 	}
 	
-	@RequestMapping(method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value="/add", method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
 	public void addDish(@RequestBody Dish dish) {
 		dService.addDish(dish);
 	}
