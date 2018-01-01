@@ -18,8 +18,9 @@ export class DishService {
   getAllDishes() {
     return this.http.get<Dish[]>(apiUrl);
   }
-  addDish(dish: Dish){
 
-    return
+  addDish(dish: Dish){
+    return this.http.post<Dish[]>(`${apiUrl}/add`, dish, httpOptions);
   }
+
 }
