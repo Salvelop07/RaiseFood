@@ -7,10 +7,10 @@
   <nav class="subnav">
     <ul class="nav">
       <li class="nav-item">
-        <a class="nav-link active">Home</a>
+        <a class="nav-link" routerLinkActive="active" routerLink="/landing">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link">Menu</a>
+        <a class="nav-link" routerLink="/menu">Menu</a>
       </li>
     </ul>
   </nav>
@@ -18,14 +18,11 @@
     <div class="content-area">
       <router-outlet></router-outlet>
     </div>
-    <!-- <nav class="sidenav"> -->
-    <clr-vertical-nav>
+    <clr-vertical-nav [clrVerticalNavCollapsible]="true" [(clrVerticalNavCollapsed)]="collapsed">
       <app-admin-sidenav *ngIf="isLoggedIn && admin" [currentUser]="currentUser"></app-admin-sidenav>
       <app-cust-sidenav *ngIf="isLoggedIn && !admin" [currentUser]="currentUser"></app-cust-sidenav>
       <app-general-sidenav *ngIf="!admin"></app-general-sidenav>
       <app-anon-sidenav *ngIf="!isLoggedIn" [currentUser]="currentUser"></app-anon-sidenav>
     </clr-vertical-nav>
-
-    <!-- </nav> -->
   </div>
 </div>

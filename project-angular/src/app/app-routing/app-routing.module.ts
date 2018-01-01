@@ -1,3 +1,4 @@
+import { MenuComponent } from './../menu/menu.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterModule, Routes } from '@angular/router';
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: 'landing', component: LandingComponent },
   { path: 'confirm-profile', component: ConfirmProfileComponent },
   { path: 'update-profile', component: UpdateProfileComponent, canActivate: [AuthGuard] },
-  { path: 'order-history', component: OrderHistoryComponent, canActivate: [AuthGuard] }
+  { path: 'order-history', component: OrderHistoryComponent, canActivate: [AuthGuard] },
+  { path: 'menu', component: MenuComponent }
 ]
 
 @NgModule({
