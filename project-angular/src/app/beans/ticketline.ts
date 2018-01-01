@@ -4,6 +4,6 @@ import { Dish } from './dish';
 export class TicketLine {
     ticketLineId: number;
     ticket: Ticket;
-    dish: Dish[];
+    dish: Dish;
     quantity: number;
 }

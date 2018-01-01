@@ -23,6 +23,7 @@ import { CustSidenavComponent } from './cust-sidenav/cust-sidenav.component';
 import { AdminSidenavComponent } from './admin-sidenav/admin-sidenav.component';
 import { LandingComponent } from './landing/landing.component';
 import { GeneralSidenavComponent } from './general-sidenav/general-sidenav.component';
+import { TicketlineService } from './services/ticketline.service';
 
 
 @NgModule({
@@ -50,7 +51,7 @@ import { GeneralSidenavComponent } from './general-sidenav/general-sidenav.compo
     FormsModule,
     ClarityModule.forRoot()
   ],
-  providers: [LoginService, UserApiService, TicketService],
+  providers: [LoginService, UserApiService, TicketService, TicketlineService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
