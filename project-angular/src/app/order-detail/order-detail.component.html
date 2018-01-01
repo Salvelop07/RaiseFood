@@ -1,10 +1,30 @@
-<clr-modal [(clrModalOpen)]="basic">
-    <h3 class="modal-title">I have a nice title</h3>
-    <div class="modal-body">
-        <p>But not much to say...</p>
+<clr-modal [(clrModalOpen)]="detailModal" [clrModalSize]="'xl'" [clrModalClosable]="false">
+    <h3 class="modal-title">Order Detail</h3>
+    <div class="modal-body" *ngIf="ticket">
+        <h5>Order Date Time: {{ticket.timeSubmitted}} </h5>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="left">Dish Name</th>
+                    <th>Quantity</th>
+                    <th>Unit Price</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let ticketline of ticketLines">
+                    <td class="left">{{ticketline.dish.name}}</td>
+                    <td>{{ticketline.quantity}}</td>
+                    <td>{{ticketline.dish.price | currency}}</td>
+                    <td>{{ticketline.quantity * ticketline.dish.price | currency}}</td>
+                </tr>
+            </tbody>
+        </table><br>
+        <h5>Total: {{ticket.total | currency}}</h5>
+        
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-outline" (click)="basic = false">Cancel</button>
-        <button type="button" class="btn btn-primary" (click)="basic = false">Ok</button>
+        <button type="button" class="btn btn-outline" (click)="cancel()">OK</button>
     </div>
 </clr-modal>

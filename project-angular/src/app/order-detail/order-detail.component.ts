@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { TicketlineService } from '../services/ticketline.service';
+import { User } from '../beans/user';
+import { Ticket } from '../beans/ticket';
+import { TicketLine } from '../beans/ticketline';
 
 @Component({
   selector: 'app-order-detail',
@@ -7,9 +11,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderDetailComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  ticketLines: TicketLine[];
 
-  ngOnInit() {
+  @Input()
+  ticket: Ticket;
+
+  @Input()
+  detailModal: boolean;
+
+  @Output()
+  detailModalEmitter: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+  constructor(private ticketLineService: TicketlineService) {}
+
+  ngOnInit() {}
+
+  cancel() {
+    this.detailModal = false;
+    this.detailModalEmitter.emit(this.detailModal);
   }
-
 }

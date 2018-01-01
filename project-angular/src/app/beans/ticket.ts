@@ -7,5 +7,4 @@ export class Ticket {
     timeResolved: string;
     user: User;
     total: number;
-    ticketLines: TicketLine[];
 }
