@@ -41,4 +41,5 @@ export class UserApiService {
   updateUser(user: User): Observable<ValidatorUserObj> {
     return this.http.post<ValidatorUserObj>(`${apiUrl}`, user, httpOptions);
   }
+  
 }

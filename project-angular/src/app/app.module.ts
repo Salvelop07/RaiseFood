@@ -25,6 +25,7 @@ import { LandingComponent } from './landing/landing.component';
 import { GeneralSidenavComponent } from './general-sidenav/general-sidenav.component';
 import { MenuComponent } from './menu/menu.component';
 import { TicketlineService } from './services/ticketline.service';
+import { DishService } from './services/dish.service';
 
 
 @NgModule({
@@ -53,7 +54,7 @@ import { TicketlineService } from './services/ticketline.service';
     FormsModule,
     ClarityModule.forRoot()
   ],
-  providers: [LoginService, UserApiService, TicketService, TicketlineService],
+  providers: [LoginService, UserApiService, TicketService, TicketlineService, DishService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
