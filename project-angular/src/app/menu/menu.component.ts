@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Dish } from '../beans/dish';
 import { TicketLine } from '../beans/ticketline';
 import { forEach } from '@angular/router/src/utils/collection';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-menu',
@@ -11,6 +12,7 @@ import { forEach } from '@angular/router/src/utils/collection';
 })
 
 export class MenuComponent implements OnInit {
+  admin: boolean = false;
   basic: boolean = false;
   ticketLines: TicketLine[] = [];
   cartArr: TicketLine[] = [];
@@ -20,12 +22,22 @@ export class MenuComponent implements OnInit {
   dishDesc: string = '';
   dishPrice: number = 0;
 
-  constructor(private dishService: DishService) {
-    this.getAllDishes();
+  constructor(
+    private dishService: DishService,
+    private loginService: LoginService
+  ) {
   }
 
   ngOnInit() {
-
+    this.loginService.isLoggedIn().subscribe((loggedIn) => {
+      if (loggedIn) {
+        let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (currentUser.role == 2) {
+          this.admin = true;
+        }
+      }
+    });
+    this.getAllDishes();
   }
 
   add(ticketLine){

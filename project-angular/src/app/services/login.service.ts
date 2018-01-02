@@ -12,6 +12,7 @@ import { ValidatorUserObj } from '../beans/user-validator';
 @Injectable()
 export class LoginService {
   loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  loggedInAndAdmin: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor(
     private uas: UserApiService
@@ -24,6 +25,16 @@ export class LoginService {
       this.loggedIn.next(false);
     }
     return this.loggedIn.asObservable().share();
+  }
+
+  isLoggedInAndAdmin() {
+    let user: User = JSON.parse(localStorage.getItem('currentUser'));
+    if (user && user.role == 2) {
+      this.loggedInAndAdmin.next(true);
+    } else {
+      this.loggedInAndAdmin.next(false);
+    }
+    return this.loggedInAndAdmin.asObservable().share();
   }
 
   hasEmptyFields(user: User): boolean {

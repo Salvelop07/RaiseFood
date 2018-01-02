@@ -1,55 +1,59 @@
-<button type="button" class="btn btn-primary" (click)="basic = true">
-        Add Dish
-    </button>
+<button *ngIf="admin" type="button" class="btn btn-primary" (click)="basic = true">
+    Add Dish
+</button>
 <div class="row">
     <div *ngFor="let ticketline of ticketLines" class="col-xs-4">
-            <div class="card">
-                <div class="card-img">
-                    <img style="background-size: cover; height: 100%; width: 100%" src="assets/images/pepperonibeef.png" >
-                </div>
-                <div class="card-block">
-                    <h3>{{ ticketline.dish.name }}</h3>
-                    <p class="card-text">
-                        More Info:
-                            <clr-signpost>
-                                    <clr-signpost-content *clrIfOpen>
-                                        <h3>Description:</h3>
-                                        <p>{{ ticketline.dish.description }}</p>
-                                    </clr-signpost-content>
-                                </clr-signpost>
-                    </p>
-                    <br>
-                    <div class="container row" style="padding-left: 0px; padding-bottom: 10px; text-align:start;">
+        <div class="card">
+            <div class="card-img">
+                <img style="background-size: cover; height: 100%; width: 100%" src="assets/images/pepperonibeef.png">
+            </div>
+            <div class="card-block">
+                <h3>{{ ticketline.dish.name }}</h3>
+                <p class="card-text">
+                    More Info:
+                    <clr-signpost>
+                        <clr-signpost-content *clrIfOpen>
+                            <h3>Description:</h3>
+                            <p>{{ ticketline.dish.description }}</p>
+                        </clr-signpost-content>
+                    </clr-signpost>
+                </p>
+                <br>
+                <div class="container row" style="padding-left: 0px; padding-bottom: 10px; text-align:start;">
                     <div class="btn-group btn-sm btn-icon col-xs flex-xs-middle">
-                            <button class="btn btn-danger" (click)="remove(ticketline)">
-                                    <clr-icon shape="minus"></clr-icon>
-                                    <span class="clr-icon-title">Remove</span>
-                            </button>
-                                <input style="width: 10px; text-align: center;" type="text" value="{{ticketline.quantity}}" readonly/>
-                                <button class="btn btn-success" (click)="add(ticketline)">
-                                        <clr-icon shape="plus"></clr-icon>
-                                        <span class="clr-icon-title">Add</span>
-                                </button>
-                            <button class="btn btn-primary" (click)="addToCart(ticketline)" [disabled]="ticketline.quantity == 0">
-                                    <clr-icon shape="shopping-cart"></clr-icon>
-                                    <span class="clr-icon-title">Cart</span>
-                            </button>
-                        </div>
-                            <button style="position: absolute; right: 0px; color: #000; background-color: #fffb21; width: auto; text-align: center;" class="btn btn-link btn-md col-xs flex-xs-middle"><strong>&nbsp;&nbsp;Price</strong><span class="badge" style="text-align: center; width: auto; color:black; background-color:#fdfffc;">&nbsp;<strong>{{ ticketline.dish.price }}</strong>&nbsp;</span>&nbsp;</button>
-                        </div>
-                        </div>
+                        <button class="btn btn-danger" (click)="remove(ticketline)">
+                            <clr-icon shape="minus"></clr-icon>
+                            <span class="clr-icon-title">Remove</span>
+                        </button>
+                        <input style="width: 10px; text-align: center;" type="text" value="{{ticketline.quantity}}" readonly/>
+                        <button class="btn btn-success" (click)="add(ticketline)">
+                            <clr-icon shape="plus"></clr-icon>
+                            <span class="clr-icon-title">Add</span>
+                        </button>
+                        <button class="btn btn-primary" (click)="addToCart(ticketline)" [disabled]="ticketline.quantity == 0">
+                            <clr-icon shape="shopping-cart"></clr-icon>
+                            <span class="clr-icon-title">Cart</span>
+                        </button>
+                    </div>
+                    <button style="position: absolute; right: 0px; color: #000; background-color: #fffb21; width: auto; text-align: center;"
+                        class="btn btn-link btn-md col-xs flex-xs-middle">
+                        <strong>&nbsp;&nbsp;Price</strong>
+                        <span class="badge" style="text-align: center; width: auto; color:black; background-color:#fdfffc;">&nbsp;
+                            <strong>{{ ticketline.dish.price | currency }}</strong>&nbsp;</span>&nbsp;</button>
                 </div>
+            </div>
         </div>
+    </div>
 </div>
-<clr-modal [(clrModalOpen)]="basic">
-        <h3 class="modal-title">Add A Pizza</h3>
-        <div class="modal-body">
-                <input class="form-control" type="text" [(ngModel)]="dishName" placeholder="Name">
-                <input class="form-control" type="text" [(ngModel)]="dishDesc" placeholder="Description">
-                <input class="form-control" type="text" [(ngModel)]="dishPrice" placeholder="Price">
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-outline" (click)="basic = false">Cancel</button>
-            <button type="button" class="btn btn-primary" (click)="basic = false; addItem();">Ok</button>
-        </div>
-    </clr-modal>
+<clr-modal *ngIf="admin" [(clrModalOpen)]="basic">
+    <h3 class="modal-title">Add A Pizza</h3>
+    <div class="modal-body">
+        <input class="form-control" type="text" [(ngModel)]="dishName" placeholder="Name">
+        <input class="form-control" type="text" [(ngModel)]="dishDesc" placeholder="Description">
+        <input class="form-control" type="text" [(ngModel)]="dishPrice" placeholder="Price">
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline" (click)="basic = false">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="basic = false; addItem();">Ok</button>
+    </div>
+</clr-modal>
