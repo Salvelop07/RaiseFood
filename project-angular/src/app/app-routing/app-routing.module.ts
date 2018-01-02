@@ -13,7 +13,7 @@ import { ShoppingCartComponent } from '../shopping-cart/shopping-cart.component'
 const routes: Routes = [
   { path: '', redirectTo: 'landing', pathMatch: 'full' },
   { path: 'landing', component: LandingComponent },
-  { path: 'confirm-profile', component: ConfirmProfileComponent },
+  { path: 'confirm-profile', component: ConfirmProfileComponent, canActivate: [AuthGuard] },
   { path: 'update-profile', component: UpdateProfileComponent, canActivate: [AuthGuard] },
   { path: 'order-history', component: OrderHistoryComponent, canActivate: [AuthGuard] },
   { path: 'menu', component: MenuComponent },

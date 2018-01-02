@@ -17,4 +17,8 @@ export class TicketService {
   getAllTicketsByUserId(userId: number) {
     return this.http.get<Ticket[]>(`${apiUrl}/${userId}`);
   }
+
+  submitATicket(ticket: Ticket) {
+    return this.http.post<Ticket>(`${apiUrl}/add`, ticket);
+  }
 }

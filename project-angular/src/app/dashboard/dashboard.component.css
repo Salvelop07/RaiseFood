@@ -1,0 +1,13 @@
+.header-1 {
+    /* background-color: #0b3c49; */
+    background-color: #ff0707;
+}
+
+.content-area {
+    /* background-color: #0b3c49; */
+}
+
+.subnav {
+    /* box-shadow: 0 .125rem 0 0 #d7d7d7; */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
