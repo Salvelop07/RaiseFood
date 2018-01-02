@@ -1,6 +1,8 @@
 import { DishService } from './../services/dish.service';
 import { Component, OnInit } from '@angular/core';
 import { Dish } from '../beans/dish';
+import { TicketLine } from '../beans/ticketline';
+import { forEach } from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-menu',
@@ -10,31 +12,38 @@ import { Dish } from '../beans/dish';
 
 export class MenuComponent implements OnInit {
 
-  quantity: number = 0;
+  ticketLines: TicketLine[] = [];
+
   dishes: Dish[] = [];
   
   constructor(private dishService: DishService) {
-    this.dishService.getAllDishes
+    this.getAllDishes();
   }
 
   ngOnInit() {
+
   }
 
-  add(){
-    if(this.quantity < 5){
-      this.quantity++; 
+  add(ticketLine){
+    if(ticketLine.quantity < 5){
+      ticketLine.quantity++; 
     }
   }
 
-  remove(){
-    if(this.quantity > 0){ 
-    this.quantity--;
+  remove(ticketLine){
+    if(ticketLine.quantity > 0){ 
+      ticketLine.quantity--;
     }
   }
 
   getAllDishes(){
     this.dishService.getAllDishes().subscribe(data => {
       this.dishes = data;
+      for(let ticketArr of this.dishes){
+        let ticketline: TicketLine={ticketLineId:null,ticket:null,dish:ticketArr,quantity:0};
+        this.ticketLines.push(ticketline);
+      }
     });
   }
+
 }

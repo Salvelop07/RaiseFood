@@ -1,136 +1,37 @@
-<div class="row">
-    <div class="col-xs-4">
-        
-        <div class="card">
-            <div class="card-img">
-                <img style="background-size: cover; height: 100%; width: 100%" src="assets/images/pepperonibeef.png" >
-            </div>
-            <div class="card-block">
-                <h3>Header</h3>
-                <button style="float: right; color: #000; background-color: #fffb21; text-align: center;" class="btn btn-link btn-lg">&nbsp;<strong>Price</strong>&nbsp;<span class="badge">7.99</span></button>
-                <p class="card-text">
-                    <br>
-                    This is a pizza.
-                </p>
-                <br>
-                <div class="btn-group btn-sm btn-icon">
-                        <button class="btn btn-success" (click)="add()">
-                                <clr-icon shape="plus"></clr-icon>
-                                <span class="clr-icon-title">Add</span>
-                            </button>
-                            <input style="width: 10px; text-align: center;" type="text" value="{{quantity}}" readonly/>
-                        <button class="btn btn-danger" (click)="remove()">
-                                <clr-icon shape="minus"></clr-icon>
-                                <span class="clr-icon-title">Remove</span>
-                        </button>
-                        <button class="btn btn-primary">
-                                <clr-icon shape="shopping-cart"></clr-icon>
-                                <span class="clr-icon-title">Cart</span>
-                        </button>
 
-                    </div>
-            </div>
-        </div>
-        
-    </div>
-    <div class="col-xs-4">
+
+<div class="row">
+    <div *ngFor="let ticketline of ticketLines" class="col-xs-4">    
         
             <div class="card">
                 <div class="card-img">
                     <img style="background-size: cover; height: 100%; width: 100%" src="assets/images/pepperonibeef.png" >
                 </div>
                 <div class="card-block">
-                    <h3>Header</h3>
-                    <button style="float: right; color: #000; background-color: #fffb21; text-align: center;" class="btn btn-link btn-lg">&nbsp;<strong>Price</strong>&nbsp;<span class="badge">7.99</span></button>
+                    <h3>{{ ticketline.dish.name }}</h3>
                     <p class="card-text">
-                        <br>
-                        This is a pizza.
+                        {{ ticketline.dish.description }}
                     </p>
                     <br>
-                    <div class="btn-group btn-sm btn-icon">
-                            <button class="btn btn-success" (click)="add()">
-                                    <clr-icon shape="plus"></clr-icon>
-                                    <span class="clr-icon-title">Add</span>
-                                </button>
-                                <input style="width: 10px; text-align: center;" type="text" value="{{quantity}}" readonly/>
-                            <button class="btn btn-danger" (click)="remove()">
+                    <div class="container row" style="padding-left: 0px; padding-bottom: 10px; text-align:start;">
+                    <div class="btn-group btn-sm btn-icon col-xs flex-xs-middle">
+                            <button class="btn btn-danger" (click)="remove(ticketline)">
                                     <clr-icon shape="minus"></clr-icon>
                                     <span class="clr-icon-title">Remove</span>
                             </button>
+                                <input style="width: 10px; text-align: center;" type="text" value="{{ticketline.quantity}}" readonly/>
+                                <button class="btn btn-success" (click)="add(ticketline)">
+                                        <clr-icon shape="plus"></clr-icon>
+                                        <span class="clr-icon-title">Add</span>
+                                </button>
                             <button class="btn btn-primary">
                                     <clr-icon shape="shopping-cart"></clr-icon>
                                     <span class="clr-icon-title">Cart</span>
                             </button>
-    
+                        </div>
+                            <button style="position: absolute; right: 0px; color: #000; background-color: #fffb21; width: auto; text-align: center;" class="btn btn-link btn-md col-xs flex-xs-middle"><strong>&nbsp;&nbsp;Price</strong><span class="badge" style="text-align: center; width: auto; color:black; background-color:#fdfffc;">&nbsp;<strong>{{ ticketline.dish.price }}</strong>&nbsp;</span>&nbsp;</button>
+                        </div>
                         </div>
                 </div>
-            </div>
-            
         </div>
-        <div class="col-xs-4">
-        
-                <div class="card">
-                    <div class="card-img">
-                        <img style="background-size: cover; height: 100%; width: 100%" src="assets/images/pepperonibeef.png" >
-                    </div>
-                    <div class="card-block">
-                        <h3>Header</h3>
-                        <button style="float: right; color: #000; background-color: #fffb21; text-align: center;" class="btn btn-link btn-lg">&nbsp;<strong>Price</strong>&nbsp;<span class="badge">7.99</span></button>
-                        <p class="card-text">
-                            <br>
-                            This is a pizza.
-                        </p>
-                        <br>
-                        <div class="btn-group btn-sm btn-icon">
-                                <button class="btn btn-success" (click)="add()">
-                                        <clr-icon shape="plus"></clr-icon>
-                                        <span class="clr-icon-title">Add</span>
-                                    </button>
-                                    <input style="width: 10px; text-align: center;" type="text" value="{{quantity}}" readonly/>
-                                <button class="btn btn-danger" (click)="remove()">
-                                        <clr-icon shape="minus"></clr-icon>
-                                        <span class="clr-icon-title">Remove</span>
-                                </button>
-                                <button class="btn btn-primary">
-                                        <clr-icon shape="shopping-cart"></clr-icon>
-                                        <span class="clr-icon-title">Cart</span>
-                                </button>
-        
-                            </div>
-                    </div>
-                </div>
-                
-            </div>
-            <div class="col-xs-4">
-        
-                    <div class="card">
-                        <div class="card-img">
-                            <img style="background-size: cover; height: 100%; width: 100%" src="assets/images/pepperonibeef.png" >
-                        </div>
-                        <div class="card-block">
-                            <h3>Header</h3>
-                            <button style="float: right; color: #000; background-color: #fffb21; text-align: center;" class="btn btn-link btn-lg">&nbsp;<strong>Price</strong>&nbsp;<span class="badge">7.99</span></button>
-                            <p class="card-text">
-                                <br>
-                                This is a pizza.
-                            </p>
-                            <br>
-                            <div class="btn-group btn-sm btn-icon">
-                                    <button class="btn btn-success" (click)="add()">
-                                            <clr-icon shape="plus"></clr-icon>
-                                            <span class="clr-icon-title">Add</span>
-                                        </button>
-                                        <input style="width: 10px; text-align: center;" type="text" value="{{quantity}}" readonly/>
-                                    <button class="btn btn-danger" (click)="remove()">
-                                            <clr-icon shape="minus"></clr-icon>
-                                            <span class="clr-icon-title">Remove</span>
-                                    </button>
-                                    <button class="btn btn-primary">
-                                            <clr-icon shape="shopping-cart"></clr-icon>
-                                            <span class="clr-icon-title">Cart</span>
-                                    </button>
-                                </div>
-                        </div>
-                    </div>
-                </div>
 </div>
