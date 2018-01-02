@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { TicketLine } from '../beans/ticketline';
 import { Router } from '@angular/router';
+import { Ticket } from '../beans/ticket';
+import { User } from '../beans/user';
+import { TicketService } from '../services/ticket.service';
+import { TicketlineService } from '../services/ticketline.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -11,6 +15,9 @@ export class ShoppingCartComponent implements OnInit {
 
   private imageSrc: string = "/assets/empty_cart.png";
   private ticketLines: TicketLine[];
+  private ticket: Ticket = new Ticket; // new ticket
+  private procTicketline: TicketLine = new TicketLine; // process each ticketline
+  private currentUser: User; // currentUser
   private totalDishes: number;
   private totalPrice: number;
 
@@ -70,12 +77,17 @@ export class ShoppingCartComponent implements OnInit {
     }
   ];
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private ticketService: TicketService, private ticketlineService: TicketlineService) { }
 
   ngOnInit() {
     // this.ticketLines = JSON.parse(localStorage.getItem("currentTicketlines"));
-    this.ticketLines = this.mockTicketLines;
-    this.ticketlinesInfo();
+    // this.currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    // NEED TO CHANGE AFTER INTEGRATE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    if(this.mockTicketLines){
+      this.ticketLines = this.mockTicketLines;
+      this.currentUser = this.ticketLines[0].ticket.user;
+      this.ticketlinesInfo();
+    }  
   }
 
   reset() {
@@ -119,9 +131,35 @@ export class ShoppingCartComponent implements OnInit {
 
   placeOrder() {
     if(this.ticketLines){
-      
+      this.processATicket();
     }
+  }
 
+  processATicket() {
+    var displayDate = new Date().toLocaleString().toString();
+    this.ticket.timeSubmitted = displayDate;
+    this.ticket.ticketId = 0;
+    this.ticket.total = this.totalPrice;
+    this.ticket.user = this.currentUser;
+    this.ticketService.submitATicket(this.ticket).subscribe(resp =>{
+      if(resp){
+        this.ticket = resp;
+        this.processATicketline();
+        window.alert("Thank You! Your Order Has Been Successfully Completed!");
+        this.reset();
+        this.router.navigate(['menu']);
+      }
+    });
+  }
+
+  processATicketline() {
+    for(var ticketline of this.ticketLines){
+      this.procTicketline.ticketLineId = 0;
+      this.procTicketline.ticket = this.ticket;
+      this.procTicketline.dish = ticketline.dish;
+      this.procTicketline.quantity = ticketline.quantity;
+      this.ticketlineService.submitATicketline(this.procTicketline).subscribe();
+    }
   }
 
   directMenu() {
