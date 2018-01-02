@@ -23,8 +23,9 @@ import { CustSidenavComponent } from './cust-sidenav/cust-sidenav.component';
 import { AdminSidenavComponent } from './admin-sidenav/admin-sidenav.component';
 import { LandingComponent } from './landing/landing.component';
 import { GeneralSidenavComponent } from './general-sidenav/general-sidenav.component';
-import { MenuComponent } from './menu/menu.component';
 import { TicketlineService } from './services/ticketline.service';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { MenuComponent } from './menu/menu.component';
 import { DishService } from './services/dish.service';
 
 
@@ -43,6 +44,7 @@ import { DishService } from './services/dish.service';
     AdminSidenavComponent,
     LandingComponent,
     GeneralSidenavComponent,
+    ShoppingCartComponent,
     MenuComponent,
   ],
   imports: [

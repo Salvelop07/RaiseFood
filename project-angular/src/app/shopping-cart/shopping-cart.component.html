@@ -1,0 +1,84 @@
+<div class="container">
+  <h2>Shopping Cart</h2>
+  <br>
+
+  <div *ngIf="ticketLines; else emptyCart">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-header">
+            You have {{totalDishes}} items in your shopping cart.
+          </div>
+          <div class="card-block">
+            <div class="card-text">
+              <table class="table table-noborder">
+                <thead>
+                  <tr>
+                    <th class="left">Dish</th>
+                    <th>Quantity</th>
+                    <th class="right">Price</th>
+                    <th>Remove</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let ticketline of ticketLines; let i = index">
+                    <td class="left">{{ticketline.dish.name}}</td>
+                    <td>
+                      <button type="button" class="btn btn-icon btn-primary btn-sm" (click)="decreQuantity(ticketline.quantity, i)">
+                        <clr-icon shape="minus"></clr-icon>
+                      </button> &nbsp; {{ticketline.quantity}}
+                      <button type="button" class="btn btn-icon btn-primary btn-sm" (click)="increQuantity(ticketline.quantity, i)">
+                        <clr-icon shape="plus"></clr-icon>
+                      </button>
+                    </td>
+                    <td>
+                      {{ ticketline.quantity * ticketline.dish.price | currency }}
+                    </td>
+                    <td class="right">
+                      <button type="button" class="btn btn-icon btn-warning btn-sm" (click)="removeTicketline(i)">
+                        <clr-icon shape="trash"></clr-icon>
+                      </button>
+                    </td>
+                  </tr>
+                  <br>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <b>Total: </b>
+                    </td>
+                    <td>{{totalPrice | currency }}</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td>
+                    </td>
+                    <td>
+                      <button class="btn btn-success" (click)="placeOrder()">PLACE AN ORDER</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-primary" (click)="reset()">CLEAR SHOPPING CART</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #emptyCart>
+    <div class="card">
+      <div class="card-header">
+        You have 0 item in your shopping cart.
+        <button class="btn btn-primary" (click)="directMenu">ORDER</button>
+      </div>
+      <div class="card-img">
+        <img src={{imageSrc}}>
+      </div>
+    </div>
+  </ng-template>
+</div>
