@@ -19,7 +19,7 @@ public class TestController {
 	static DishReviewService drService;
 
 //	public String home() {
-//		return "In Project 2 ThrowsFoodException test controller";
+//		return "In Project 2 RaiseFood test controller";
 //	}
 	@RequestMapping(method=RequestMethod.POST)
 	public void addDishReview(@RequestBody DishReview dr) {
