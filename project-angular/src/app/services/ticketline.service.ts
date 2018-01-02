@@ -13,4 +13,8 @@ export class TicketlineService {
   getAllTicketLinesByTicketId(ticketId: number) {
     return this.http.get<TicketLine[]>(`${apiUrl}/${ticketId}`);
   }
+
+  submitATicketline(ticketline: TicketLine) {
+    return this.http.post<TicketLine>(`${apiUrl}/add`, ticketline);
+  }
 }
