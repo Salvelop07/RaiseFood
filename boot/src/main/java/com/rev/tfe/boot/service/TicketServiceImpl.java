@@ -25,4 +25,9 @@ public class TicketServiceImpl implements TicketService {
 	public List<Ticket> findAllByUserId(Integer userId) {
 		return ticketRepo.findAllByUserId(userId);
 	}
+
+	@Override
+	public Ticket addTicket(Ticket ticket) {
+		return ticketRepo.save(ticket);
+	}
 }

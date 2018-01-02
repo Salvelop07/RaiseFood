@@ -8,5 +8,6 @@ public interface TicketService {
 	
 	List<Ticket> findAllTickets();
 	List<Ticket> findAllByUserId(Integer userId);
+	Ticket addTicket(Ticket ticket);
 
 }

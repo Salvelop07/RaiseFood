@@ -6,5 +6,6 @@ import com.rev.tfe.boot.domain.TicketLine;
 
 public interface TicketLineService {
 
-	List<TicketLine> findAllByTicketId(Integer ticketId); 
+	List<TicketLine> findAllByTicketId(Integer ticketId);
+	TicketLine addTicketLine(TicketLine ticketLine);
 }

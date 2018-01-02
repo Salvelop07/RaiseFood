@@ -20,4 +20,9 @@ public class TicketLineServiceImpl implements TicketLineService {
 	public List<TicketLine> findAllByTicketId(Integer ticketId) {
 		return ticketLineRepo.findAllByTicketTicketId(ticketId);
 	}
+
+	@Override
+	public TicketLine addTicketLine(TicketLine ticketLine) {
+		return ticketLineRepo.save(ticketLine);
+	}
 }
