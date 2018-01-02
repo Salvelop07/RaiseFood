@@ -1,0 +1,32 @@
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #ff07077a;
+}
+
+.deals-img:hover {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.container:hover .overlay {
+    opacity: 1;
+}
+
+.overlay-text {
+    text-align: center;
+}
+
+/* .card.clickable:hover {
+    box-shadow: 0 .125rem 0 #fffb21;
+    border: 1px solid #fffb21;
+} */
+
