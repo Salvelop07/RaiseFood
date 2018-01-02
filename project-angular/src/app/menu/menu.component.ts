@@ -48,7 +48,7 @@ export class MenuComponent implements OnInit {
       description: this.dishDesc
     } 
     console.log(aDish);
-    this.dishService.addDish(aDish);
+    this.dishService.addADish(aDish).subscribe(() => this.getAllDishes());
     console.log("after add dish service.")
   }
 
@@ -64,6 +64,7 @@ export class MenuComponent implements OnInit {
 
   getAllDishes(){
     this.dishService.getAllDishes().subscribe(data => {
+      this.ticketLines = [];
       this.dishes = data;
       for(let ticketArr of this.dishes){
         let ticketline: TicketLine={ticketLineId:null,ticket:null,dish:ticketArr,quantity:0};

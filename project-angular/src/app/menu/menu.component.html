@@ -1,3 +1,6 @@
+<button type="button" class="btn btn-primary" (click)="basic = true">
+        Add Dish
+    </button>
 <div class="row">
     <div *ngFor="let ticketline of ticketLines" class="col-xs-4">
             <div class="card">
@@ -7,7 +10,13 @@
                 <div class="card-block">
                     <h3>{{ ticketline.dish.name }}</h3>
                     <p class="card-text">
-                        {{ ticketline.dish.description }}
+                        More Info:
+                            <clr-signpost>
+                                    <clr-signpost-content *clrIfOpen>
+                                        <h3>Description:</h3>
+                                        <p>{{ ticketline.dish.description }}</p>
+                                    </clr-signpost-content>
+                                </clr-signpost>
                     </p>
                     <br>
                     <div class="container row" style="padding-left: 0px; padding-bottom: 10px; text-align:start;">
@@ -33,7 +42,7 @@
         </div>
 </div>
 <clr-modal [(clrModalOpen)]="basic">
-        <h3 class="modal-title">I have a nice title</h3>
+        <h3 class="modal-title">Add A Pizza</h3>
         <div class="modal-body">
                 <input class="form-control" type="text" [(ngModel)]="dishName" placeholder="Name">
                 <input class="form-control" type="text" [(ngModel)]="dishDesc" placeholder="Description">
@@ -44,6 +53,3 @@
             <button type="button" class="btn btn-primary" (click)="basic = false; addItem();">Ok</button>
         </div>
     </clr-modal>
-<button type="button" class="btn btn-primary" (click)="basic = true">
-    Add Dish
-</button>

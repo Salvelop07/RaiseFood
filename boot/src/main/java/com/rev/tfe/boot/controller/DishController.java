@@ -22,7 +22,7 @@ public class DishController {
 	@Autowired
 	private DishService dService;
 	
-	@RequestMapping(method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value="/add", method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE)
 	public Dish addDish(@RequestBody Dish dish) {
 		System.out.println("inside dish adddish controller");
 		return dService.addDish(dish);

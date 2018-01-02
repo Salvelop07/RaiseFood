@@ -13,17 +13,17 @@ export class DishService {
 
   constructor(private http: HttpClient) { }
   getAllDishById(dishId: number) {
-    return this.http.get<Dish[]>(`${apiUrl}/${dishId}`);
+    return this.http.get<Dish>(`${apiUrl}/${dishId}`);
   }
   getAllDishes() {
     return this.http.get<Dish[]>(apiUrl);
   }
 
-  addDish(dish: Dish){
+  addADish(dish: Dish){
     console.log("inside adddish service");
     console.log(dish);
     console.log(apiUrl);
-    return this.http.post<Dish>(`${apiUrl}`, dish, httpOptions);
+    return this.http.post<Dish>(`${apiUrl}/add`, dish, httpOptions);
 
   }
 
