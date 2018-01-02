@@ -22,6 +22,12 @@ public class DishController {
 	@Autowired
 	private DishService dService;
 	
+	@RequestMapping(method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE)
+	public Dish addDish(@RequestBody Dish dish) {
+		System.out.println("inside dish adddish controller");
+		return dService.addDish(dish);
+	}
+	
 	@RequestMapping(method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
 	public List<Dish> findAll() {
 		return dService.findAllDish();
@@ -32,8 +38,4 @@ public class DishController {
 		return dService.findDishById(id);
 	}
 	
-	@RequestMapping(value="/add", method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
-	public void addDish(@RequestBody Dish dish) {
-		dService.addDish(dish);
-	}
 }

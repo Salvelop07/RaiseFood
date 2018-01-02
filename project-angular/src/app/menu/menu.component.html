@@ -1,8 +1,5 @@
-
-
 <div class="row">
-    <div *ngFor="let ticketline of ticketLines" class="col-xs-4">    
-        
+    <div *ngFor="let ticketline of ticketLines" class="col-xs-4">
             <div class="card">
                 <div class="card-img">
                     <img style="background-size: cover; height: 100%; width: 100%" src="assets/images/pepperonibeef.png" >
@@ -24,7 +21,7 @@
                                         <clr-icon shape="plus"></clr-icon>
                                         <span class="clr-icon-title">Add</span>
                                 </button>
-                            <button class="btn btn-primary">
+                            <button class="btn btn-primary" (click)="addToCart(ticketline)" [disabled]="ticketline.quantity == 0">
                                     <clr-icon shape="shopping-cart"></clr-icon>
                                     <span class="clr-icon-title">Cart</span>
                             </button>
@@ -35,3 +32,18 @@
                 </div>
         </div>
 </div>
+<clr-modal [(clrModalOpen)]="basic">
+        <h3 class="modal-title">I have a nice title</h3>
+        <div class="modal-body">
+                <input class="form-control" type="text" [(ngModel)]="dishName" placeholder="Name">
+                <input class="form-control" type="text" [(ngModel)]="dishDesc" placeholder="Description">
+                <input class="form-control" type="text" [(ngModel)]="dishPrice" placeholder="Price">
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline" (click)="basic = false">Cancel</button>
+            <button type="button" class="btn btn-primary" (click)="basic = false; addItem();">Ok</button>
+        </div>
+    </clr-modal>
+<button type="button" class="btn btn-primary" (click)="basic = true">
+    Add Dish
+</button>

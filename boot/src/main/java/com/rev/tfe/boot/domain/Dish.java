@@ -17,7 +17,7 @@ public class Dish {
 	
 	@Id
 	@Column(name="DISH_ID")
-	@SequenceGenerator(allocationSize=1, name="D_SEQ", sequenceName="D_SEQ")
+	@SequenceGenerator(name="D_SEQ", sequenceName="D_SEQ")
 	@GeneratedValue(generator="D_SEQ", strategy=GenerationType.SEQUENCE)
 	private Integer id;
 	

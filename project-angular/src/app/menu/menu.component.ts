@@ -11,11 +11,15 @@ import { forEach } from '@angular/router/src/utils/collection';
 })
 
 export class MenuComponent implements OnInit {
-
+  basic: boolean = false;
   ticketLines: TicketLine[] = [];
-
+  cartArr: TicketLine[] = [];
   dishes: Dish[] = [];
-  
+  dishId: number = null;
+  dishName: string = '';
+  dishDesc: string = '';
+  dishPrice: number = 0;
+
   constructor(private dishService: DishService) {
     this.getAllDishes();
   }
@@ -34,6 +38,28 @@ export class MenuComponent implements OnInit {
     if(ticketLine.quantity > 0){ 
       ticketLine.quantity--;
     }
+  }
+  
+  addItem(){
+    let aDish: Dish = {
+      id: this.dishId,
+      name: this.dishName,
+      price: this.dishPrice,
+      description: this.dishDesc
+    } 
+    console.log(aDish);
+    this.dishService.addDish(aDish);
+    console.log("after add dish service.")
+  }
+
+  addToCart(ticketLine){
+    if(!this.cartArr.includes(ticketLine)){
+      console.log("inside addtocart check");
+      console.log(ticketLine);
+      this.cartArr.push(ticketLine);
+      localStorage.setItem("shoppingCart", JSON.stringify(this.cartArr));
+    }
+    
   }
 
   getAllDishes(){
