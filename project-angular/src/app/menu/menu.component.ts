@@ -61,6 +61,9 @@ export class MenuComponent implements OnInit {
     } 
     console.log(aDish);
     this.dishService.addADish(aDish).subscribe(() => this.getAllDishes());
+    this.dishName = "";
+    this.dishPrice = 0;
+    this.dishDesc = "";
     console.log("after add dish service.")
   }
 

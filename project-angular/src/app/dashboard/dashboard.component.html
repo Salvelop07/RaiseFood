@@ -17,6 +17,14 @@
   <div class="content-container">
     <div class="content-area">
       <router-outlet></router-outlet>
+      <br>
+      <hr>
+      <footer>
+        <div style="height: 100px">
+          Powered by
+          <img src="../assets/images/eagreats-logo-black.png" style="background-size:cover; height: 100%" />
+        </div>
+      </footer>
     </div>
     <clr-vertical-nav [clrVerticalNavCollapsible]="false" [(clrVerticalNavCollapsed)]="collapsed">
       <app-admin-sidenav *ngIf="isLoggedIn && admin" [currentUser]="currentUser"></app-admin-sidenav>
